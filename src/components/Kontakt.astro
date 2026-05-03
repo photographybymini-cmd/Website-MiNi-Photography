@@ -1,0 +1,157 @@
+---
+import '../styles/kontakt.css';
+---
+<section class="kontakt" id="kontakt" aria-labelledby="kontakt-heading">
+  <div class="container">
+
+    <div class="reveal">
+      <span class="section-label">Kontakt</span>
+      <h2 class="kontakt__heading" id="kontakt-heading">Schreib uns gerne!</h2>
+      <p class="kontakt__sub">
+        und erzähl uns von euren Plänen.
+      </p>
+    </div>
+
+    <div class="kontakt__grid">
+
+      <!-- Form -->
+      <div class="reveal reveal--delay-1">
+        <form
+          class="kontakt__form"
+          name="kontakt"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          id="kontakt-form"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="kontakt" />
+          <p style="display:none" aria-hidden="true">
+            <label>Nicht ausfüllen: <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-field">
+            <label for="name">Dein Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Name"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="email">Deine E-Mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="E-Mail Adresse"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="thema">Um was geht es?</label>
+            <div class="form-select-wrap">
+              <select id="thema" name="thema" required>
+                <option value="" disabled selected>Bitte auswählen</option>
+                <option value="Hochzeit">Hochzeit</option>
+                <option value="Paar">Paar</option>
+                <option value="Familie">Familie</option>
+                <option value="Gutschein">Gutschein</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+              <svg class="form-select-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="2,4 6,8 10,4"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="nachricht">Deine Nachricht an uns</label>
+            <textarea
+              id="nachricht"
+              name="nachricht"
+              placeholder="Hier schreiben"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="kontakt__submit">
+            Nachricht senden
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="7" x2="11" y2="7"/>
+              <polyline points="8,4 11,7 8,10"/>
+            </svg>
+          </button>
+        </form>
+
+        <p class="kontakt__success" id="kontakt-success" role="status">
+          Danke für deine Nachricht. Wir melden uns schnellstmöglich bald bei dir.
+        </p>
+      </div>
+
+      <!-- Info -->
+      <div class="kontakt__info reveal reveal--delay-2">
+        <div class="kontakt__info-item">
+          <span class="kontakt__info-label">E-Mail</span>
+          <a href="mailto:info@mini-photography.de" class="kontakt__info-value">
+            info@mini-foto.de
+          </a>
+        </div>
+
+        <div class="kontakt__info-divider" aria-hidden="true"></div>
+
+        <div class="kontakt__info-item">
+          <span class="kontakt__info-label">Telefon</span>
+          <span class="kontakt__info-value">017675871418</span>
+        </div>
+
+        <div class="kontakt__info-divider" aria-hidden="true"></div>
+
+        <div class="kontakt__info-item">
+          <span class="kontakt__info-label">Social</span>
+          <div class="kontakt__socials">
+            <a
+              href="https://instagram.com/photography.by.mini"
+              class="kontakt__social"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="MiNi Photography auf Instagram"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              </svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('kontakt-form') as HTMLFormElement | null;
+  const success = document.getElementById('kontakt-success');
+
+  form?.addEventListener('submit', async (e) => {
+    // Only intercept if NOT deployed on Netlify
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet…';
+      await new Promise((r) => setTimeout(r, 800));
+      form.style.display = 'none';
+      if (success) success.classList.add('visible');
+    }
+  });
+</script>

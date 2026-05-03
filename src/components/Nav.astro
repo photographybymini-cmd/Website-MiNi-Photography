@@ -1,0 +1,65 @@
+---
+import '../styles/nav.css';
+---
+<nav class="nav" role="navigation" aria-label="Hauptnavigation">
+  <a href="/" class="nav__logo" aria-label="MiNi Fotografie — Startseite">
+    <img src="/images/logo.png" alt="MiNi Photography Logo" class="nav__logo-img" width="64" height="64" />
+  </a>
+
+  <ul class="nav__links" role="list">
+    <li><a href="/#start" class="nav__link">Start</a></li>
+    <li><a href="/#ueber-uns" class="nav__link">Über uns</a></li>
+    <li><a href="/hochzeiten" class="nav__link">Hochzeiten</a></li>
+    <li><a href="/paare" class="nav__link">Paare</a></li>
+    <li><a href="/familie" class="nav__link">Familie</a></li>
+    <li><a href="/familienguide" class="nav__link">Familien Guide</a></li>
+    <li><a href="/#kontakt" class="nav__link">Kontakt</a></li>
+  </ul>
+
+  <a
+    href="https://instagram.com/photography.by.mini"
+    class="nav__instagram"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="MiNi Photography auf Instagram"
+  >
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+    </svg>
+  </a>
+
+  <button
+    class="nav__hamburger"
+    aria-label="Menü öffnen"
+    aria-expanded="false"
+    aria-controls="nav-overlay"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div
+  class="nav__overlay"
+  id="nav-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation"
+>
+  <button class="nav__overlay-close" aria-label="Menü schließen">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <a href="/#start" class="nav__overlay-link">Start</a>
+  <a href="/#ueber-uns" class="nav__overlay-link">Über uns</a>
+  <a href="/hochzeiten" class="nav__overlay-link">Hochzeiten</a>
+  <a href="/paare" class="nav__overlay-link">Paare</a>
+  <a href="/familie" class="nav__overlay-link">Familie</a>
+  <a href="/familienguide" class="nav__overlay-link">Familien Guide</a>
+  <a href="/#kontakt" class="nav__overlay-link">Kontakt</a>
+</div>

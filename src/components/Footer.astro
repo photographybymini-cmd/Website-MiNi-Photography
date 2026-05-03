@@ -1,0 +1,24 @@
+---
+import '../styles/footer.css';
+const year = new Date().getFullYear();
+---
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__inner">
+      <p class="footer__copy">
+        &copy; {year} MiNi Photography &middot; Miette &amp; Nicolai &middot; Alle Rechte vorbehalten
+      </p>
+      <nav class="footer__nav" aria-label="Footer-Navigation">
+        <a href="#start" class="footer__link">Start</a>
+        <a href="#ueber-uns" class="footer__link">Über uns</a>
+        <a href="#galerie" class="footer__link">Galerie</a>
+        <a href="#kontakt" class="footer__link">Kontakt</a>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <a href="/impressum" class="footer__legal-link">Impressum</a>
+      <span class="footer__legal-dot" aria-hidden="true">&middot;</span>
+      <a href="/datenschutz" class="footer__legal-link">Datenschutz</a>
+    </div>
+  </div>
+</footer>

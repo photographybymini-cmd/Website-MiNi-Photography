@@ -1,0 +1,804 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/subpage.css';
+
+const reasons = [
+  {
+    title: "Erinnerungen die bleiben",
+    paragraphs: [
+      "Ein Fotoshooting bietet nicht nur die Möglichkeit, wunderschöne Bilder zu erhalten, sondern ist auch eine spaßige Erfahrung.",
+      "Es ist eine Gelegenheit, gemeinsam zu lachen und eine schöne Zeit miteinander zu verbringen.",
+    ],
+    image: "/images/familie/erinnerungen-die-bleiben.jpg",
+  },
+  {
+    title: "Gemeinsam Zeit verbringen",
+    paragraphs: [
+      "In unserem hektischen Alltag bleibt oft wenig Zeit für gemeinsame Aktivitäten. Ein Fotoshooting schafft einen speziellen Moment, in dem sich die Familie ganz aufeinander konzentrieren kann.",
+    ],
+    image: "/images/familie/gemeinsam-zeit-verbringen.jpg",
+  },
+  {
+    title: "Wachstum & Veränderung",
+    paragraphs: [
+      "Kinder wachsen so schnell heran und Familien entwickeln sich im Laufe der Zeit. Ein Familienfotoshooting ermöglicht es, diese Veränderungen festzuhalten und die verschiedenen Lebensabschnitte eurer Familie zu dokumentieren.",
+    ],
+    image: "/images/familie/wachstum-veraenderung.jpg",
+  },
+];
+
+const faqs = [
+  {
+    q: "Wann erhalten wir die Bilder?",
+    a: "Nach spätestens 10 Tagen erhaltet ihr die bearbeiteten Bilder über einen Link zu einer Online-Galerie von uns. Dort könnt ihr die Bilder herunterladen und teilen.",
+  },
+  {
+    q: "Wie werden uns die Bilder zur Verfügung gestellt?",
+    a: "Die Bilder werden euch in einer Online-Galerie zur Verfügung gestellt, die ihr ganz nach Belieben mit Freunden und Familie teilen könnt. Auf Wunsch richten wir die Galerie auch passwortgeschützt ein. Ihr habt die Möglichkeit, die Bilder in voller Auflösung und ohne Wasserzeichen herunterzuladen. Die Galerie bleibt für mindestens 3 Monate online, oftmals aber auch länger.",
+  },
+  {
+    q: "Wie und wann bezahlen wir?",
+    a: "Bei uns habt ihr die Wahl: Ihr könnt bequem per PayPal, Überweisung oder bei kleineren Beträgen auch in bar zahlen. Unsere Zahlungsbedingungen werden vertraglich festgelegt, um Transparenz und Sicherheit für beide Seiten zu gewährleisten.",
+  },
+  {
+    q: "Was passiert, wenn ihr ausfallt?",
+    a: "Dass wir beide krank sind ist sehr unwahrscheinlich. Falls es wirklich so sein sollte, können wir den Termin natürlich verschieben. Das gilt auch, wenn ihr erkranken solltet.",
+  },
+  {
+    q: "Was kostet ein Familienshooting?",
+    a: "Unsere Preise beginnen bei 100 € und reichen bis zu 200 €. Das richtet sich nach der Länge des Shootings und der Anzahl der Bilder, die ihr gerne haben möchtet.",
+  },
+];
+---
+
+<BaseLayout
+  title="Familienfotografie – MiNi Photography"
+  description="Authentische Familienfotografie von Miette & Nicolai. Wir halten eure gemeinsamen Momente natürlich und ungestellt fest."
+>
+  <Nav />
+  <main id="main">
+
+    <!-- ─── Hero ─────────────────────────────────────────── -->
+    <section class="fa-hero" aria-label="Familienfotografie">
+      <div class="fa-hero__img">
+        <img
+          src="/images/angebote/Familien-Angebot.jpg"
+          alt="Familienfotografie – MiNi Photography"
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="fa-hero__overlay"></div>
+      <div class="fa-hero__content">
+        <a href="/" class="fa-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="13" y1="8" x2="3" y2="8"/><polyline points="7,4 3,8 7,12"/>
+          </svg>
+          Startseite
+        </a>
+        <div class="fa-hero__text">
+          <h1 class="fa-hero__title">Familien</h1>
+        </div>
+      </div>
+      <div class="fa-hero__scroll" aria-hidden="true">
+        <div class="fa-hero__scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ─── Intro ─────────────────────────────────────────── -->
+    <section class="fa-intro">
+      <div class="fa-intro__inner">
+        <blockquote class="fa-intro__quote">
+          Der Ort, an dem das Herz zu Hause ist&nbsp;und<br/>
+          <em>die Liebe niemals endet.</em>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ─── 3 Gründe ──────────────────────────────────────── -->
+    <section class="fa-reasons">
+      <div class="fa-reasons__inner">
+        <div class="fa-reasons__header">
+          <h2 class="fa-reasons__heading">3 Gründe für ein <em>Familienshooting.</em></h2>
+        </div>
+        <div class="fa-reasons__list">
+          {reasons.map((r) => (
+            <article class="fa-reasons__row">
+              <h3 class="fa-reasons__title">{r.title}</h3>
+              <div class="fa-reasons__image">
+                <img src={r.image} alt={r.title} loading="lazy" />
+              </div>
+              <div class="fa-reasons__body">
+                {r.paragraphs.map((p) => <p class="fa-reasons__text">{p}</p>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Portfolio Teaser ──────────────────────────────── -->
+    <section class="fa-portfolio">
+      <div class="fa-portfolio__inner">
+        <div class="fa-portfolio__text">
+          <span class="fa-portfolio__label">Unsere Arbeit</span>
+          <h2 class="fa-portfolio__heading">Familie, <em>festgehalten.</em></h2>
+          <p class="fa-portfolio__body">Schaut euch unsere Familiengalerie an und lasst euch inspirieren. Jede Familie hat ihre eigene Geschichte – und genau die halten wir fest.</p>
+          <a href="/familie/portfolio" class="fa-portfolio__btn">
+            Portfolio ansehen
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+            </svg>
+          </a>
+        </div>
+        <div class="fa-portfolio__visual">
+          <div class="fa-portfolio__img-wrap">
+            <img src="/images/angebote/Familien-Angebot.jpg" alt="Familienportfolio MiNi Photography" width="800" height="1000" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FAQ ──────────────────────────────────────────── -->
+    <section class="fa-faq">
+      <div class="fa-faq__inner">
+        <div class="fa-faq__header">
+          <span class="section-label">FAQ</span>
+          <h2 class="fa-faq__heading">Eure Fragen.<br/><em>Unsere Antworten.</em></h2>
+        </div>
+        <div class="fa-faq__list">
+          {faqs.map((item, i) => (
+            <details class="fa-faq__item" name="familie-faq">
+              <summary class="fa-faq__question">
+                <span class="fa-faq__q-num">0{i + 1}</span>
+                <span>{item.q}</span>
+                <svg class="fa-faq__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="4,6 8,10 12,6"/>
+                </svg>
+              </summary>
+              <div class="fa-faq__answer">
+                <p>{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA ──────────────────────────────────────────── -->
+    <section class="fa-cta">
+      <div class="fa-cta__inner">
+        <span class="fa-cta__eyebrow">Schreibt uns!</span>
+        <div class="fa-cta__image">
+          <img src="/images/cta/uns-bei-der-arbeit.jpg" alt="Miette und Nicolai bei der Arbeit" loading="lazy" />
+        </div>
+        <h2 class="fa-cta__heading">Gemeinsam verewigen wir<br/><em>eure schönsten Momente.</em></h2>
+        <a href="/#kontakt" class="fa-cta__btn">
+          Kontakt
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ─── Hero ────────────────────────────────────────────────── */
+.fa-hero {
+  position: relative;
+  height: 100dvh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.fa-hero__img {
+  position: absolute;
+  inset: 0;
+}
+
+.fa-hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: faBreathe 10s ease-in-out infinite;
+}
+
+@keyframes faBreathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.035); }
+}
+
+.fa-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(30,20,16,0.85) 0%, rgba(30,20,16,0.25) 50%, rgba(30,20,16,0.1) 100%),
+    linear-gradient(to right, rgba(30,20,16,0.3) 0%, transparent 60%);
+}
+
+.fa-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-16) var(--container-gutter);
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.fa-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,252,250,0.6);
+  transition: color 0.3s ease;
+  margin-top: 120px;
+}
+
+.fa-hero__back:hover { color: rgba(255,252,250,0.9); }
+
+.fa-hero__text {
+  padding-bottom: var(--space-8);
+}
+
+.fa-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 10rem);
+  font-weight: 700;
+  color: #fffcfa;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: faFadeUp 1s ease forwards 0.4s;
+}
+
+.fa-hero__scroll {
+  position: absolute;
+  bottom: var(--space-8);
+  right: var(--container-gutter);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(196,181,172,0.6);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  opacity: 0;
+  animation: faFadeUp 1s ease forwards 1s;
+}
+
+.fa-hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, rgba(196,181,172,0.5));
+  margin-bottom: var(--space-2);
+}
+
+@keyframes faFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Intro ────────────────────────────────────────────────── */
+.fa-intro {
+  background: var(--color-cream);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.fa-intro__inner {
+  max-width: 900px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.fa-intro__quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-bark);
+  margin: 0;
+  border: none;
+  text-align: center;
+}
+
+.fa-intro__quote em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+/* ─── Reasons ──────────────────────────────────────────────── */
+.fa-reasons {
+  background: var(--color-parchment);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+}
+
+.fa-reasons__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.fa-reasons__header {
+  text-align: center;
+}
+
+.fa-reasons__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.15;
+  margin: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .fa-reasons__heading {
+    white-space: normal;
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
+    text-wrap: balance;
+  }
+}
+
+.fa-reasons__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.fa-reasons__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.fa-reasons__row {
+  display: grid;
+  grid-template-columns: 6fr 8fr;
+  grid-template-areas:
+    "image title"
+    "image body";
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(2rem, 5vw, 5rem);
+  row-gap: var(--space-4);
+  align-items: start;
+}
+
+.fa-reasons__image {
+  grid-area: image;
+  align-self: center;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.fa-reasons__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.fa-reasons__title {
+  grid-area: title;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.fa-reasons__body {
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.fa-reasons__text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+  margin: 0;
+  max-width: 60ch;
+}
+
+@media (max-width: 720px) {
+  .fa-reasons__row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "image"
+      "body";
+    grid-template-rows: auto;
+    row-gap: var(--space-4);
+  }
+}
+
+@media (max-width: 900px) {
+  .fa-reasons__inner {
+    gap: var(--space-8);
+  }
+}
+
+/* ─── Portfolio ────────────────────────────────────────────── */
+.fa-portfolio {
+  background: var(--color-cream);
+  overflow: hidden;
+}
+
+.fa-portfolio__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 0 var(--container-gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 70vh;
+  gap: var(--space-16);
+}
+
+.fa-portfolio__text {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+.fa-portfolio__label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  margin-bottom: var(--space-6);
+}
+
+.fa-portfolio__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-6);
+  white-space: nowrap;
+}
+
+@media (max-width: 540px) {
+  .fa-portfolio__heading {
+    white-space: normal;
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+}
+
+.fa-portfolio__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.fa-portfolio__body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+  max-width: 44ch;
+  margin-bottom: var(--space-16);
+}
+
+.fa-portfolio__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  border: 1px solid rgba(92,72,67,0.3);
+  padding: var(--space-4) var(--space-8);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.fa-portfolio__btn:hover {
+  background: rgba(145,124,113,0.1);
+  border-color: rgba(92,72,67,0.6);
+}
+
+.fa-portfolio__btn svg {
+  transition: transform 0.25s ease;
+}
+
+.fa-portfolio__btn:hover svg {
+  transform: translateX(5px);
+}
+
+.fa-portfolio__visual {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.fa-portfolio__img-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  overflow: hidden;
+}
+
+.fa-portfolio__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: sepia(0.1) contrast(1.05);
+  transition: transform 0.8s ease;
+}
+
+.fa-portfolio__img-wrap:hover img {
+  transform: scale(1.03);
+}
+
+/* ─── FAQ ──────────────────────────────────────────────────── */
+.fa-faq {
+  background: var(--color-parchment);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+}
+
+.fa-faq__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.fa-faq__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.15;
+  margin-top: var(--space-3);
+  position: sticky;
+  top: 120px;
+}
+
+.fa-faq__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.fa-faq__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-faq__item {
+  border-top: 1px solid rgba(196,181,172,0.4);
+}
+
+.fa-faq__item:last-child {
+  border-bottom: 1px solid rgba(196,181,172,0.4);
+}
+
+.fa-faq__question {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6) 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  transition: color 0.25s ease;
+  user-select: none;
+}
+
+.fa-faq__question::-webkit-details-marker { display: none; }
+.fa-faq__question::marker { display: none; }
+
+.fa-faq__question:hover {
+  color: var(--color-clay);
+}
+
+.fa-faq__q-num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-clay);
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.fa-faq__question span:not(.fa-faq__q-num) {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.fa-faq__chevron {
+  flex-shrink: 0;
+  color: var(--color-clay);
+  transition: transform 0.3s ease;
+}
+
+details[open] .fa-faq__chevron {
+  transform: rotate(180deg);
+}
+
+.fa-faq__answer {
+  padding: 0 0 var(--space-6) calc(28px + var(--space-4));
+  animation: faFadeDown 0.3s ease;
+}
+
+@keyframes faFadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fa-faq__answer p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+  max-width: 60ch;
+}
+
+/* ─── CTA ──────────────────────────────────────────────────── */
+.fa-cta {
+  background: var(--color-cream);
+  padding: clamp(5rem, 10vw, 10rem) var(--container-gutter);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.fa-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.fa-cta__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  margin-bottom: var(--space-6);
+}
+
+.fa-cta__image {
+  display: block;
+  width: clamp(200px, 30vw, 280px);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  margin-bottom: var(--space-10);
+  overflow: hidden;
+}
+
+.fa-cta__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.fa-cta__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-12);
+}
+
+.fa-cta__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.fa-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  border: 1px solid rgba(92,72,67,0.3);
+  padding: var(--space-4) var(--space-8);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.fa-cta__btn:hover {
+  background: rgba(145,124,113,0.1);
+  border-color: rgba(92,72,67,0.6);
+}
+
+.fa-cta__btn svg {
+  transition: transform 0.25s ease;
+}
+
+.fa-cta__btn:hover svg {
+  transform: translateX(5px);
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .fa-portfolio__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .fa-portfolio__visual { min-height: 50vw; }
+
+  .fa-faq__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .fa-faq__heading {
+    position: static;
+  }
+}
+
+@media (max-width: 540px) {
+  .fa-hero__scroll { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-hero__img img { animation: none; }
+  .fa-hero__title, .fa-hero__scroll { opacity: 1; animation: none; }
+  .fa-faq__answer { animation: none; }
+}
+</style>

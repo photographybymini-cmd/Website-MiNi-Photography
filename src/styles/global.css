@@ -1,0 +1,163 @@
+/* ─── CSS Custom Properties ─────────────────────────────── */
+:root {
+  /* Colors — CI MiNi Photography */
+  --color-cream:      #FFFCFA;   /* CI: Hintergrund */
+  --color-parchment:  #ECE4DB;   /* CI: Karten / Sections */
+  --color-sand:       #C4B5AC;   /* abgeleitet: Borders, Divider */
+  --color-clay:       #917C71;   /* CI: Buttons / Headlines / Akzente */
+  --color-bark:       #5C4843;   /* abgeleitet: dunkle Überschriften, Kontakt-BG */
+  --color-ink:        #1E1817;   /* abgeleitet: primärer Fließtext */
+  --color-white:      #FFFCFA;   /* = cream */
+  --color-accent:     #917C71;   /* CI: = clay */
+  --color-muted:      #888888;   /* CI: Sekundärtext */
+  --color-overlay:    rgba(92, 72, 67, 0.45);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Lato', system-ui, sans-serif;
+
+  --text-hero:    clamp(3.5rem, 8vw, 8rem);
+  --text-section: clamp(2rem, 4vw, 3.5rem);
+  --text-sub:     clamp(1.1rem, 2vw, 1.4rem);
+  --text-body:    1rem;
+  --text-caption: 0.875rem;
+  --text-label:   0.7rem;
+
+  --leading-display: 0.95;
+  --leading-body:    1.7;
+
+  /* Spacing */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --container-max:    1280px;
+  --container-gutter: clamp(1.5rem, 5vw, 4rem);
+
+  /* Z-Index */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-nav:     20;
+  --z-overlay: 30;
+  --z-modal:   50;
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-base:   220ms ease;
+  --transition-slow:   350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  color: var(--color-ink);
+  background-color: var(--color-cream);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ─── Skip to content ────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  background: var(--color-bark);
+  color: var(--color-cream);
+  padding: var(--space-2) var(--space-4);
+  z-index: 100;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* ─── Section Label ──────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  display: block;
+  margin-bottom: var(--space-6);
+}
+
+/* ─── Container ──────────────────────────────────────────── */
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+
+/* ─── Scroll Reveal ──────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--delay-1 { transition-delay: 100ms; }
+.reveal--delay-2 { transition-delay: 200ms; }
+.reveal--delay-3 { transition-delay: 300ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,1042 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/subpage.css';
+
+const reviews = [
+  {
+    text: "Wir sind so glücklich mit unseren Hochzeitsaufnahmen. Danke dass wir unsere Erinnerungen an diesen besondern Tag, so schön aufbewahren können. Sehr angenehme, liebe Menschen.",
+    name: "Laura & Daniel",
+    occasion: "05.08.2023",
+  },
+  {
+    text: "Mit ihrer sympathischen und gleichzeitig professionellen Art nahmen uns die beiden jedoch recht schnell die Aufregung, sodass wir am Ende wirklich tolle Bilder erhielten. Auch die darauffolgenden Tage (Standesamt und freie Trauung) waren mit Miette und Nicolai mehr als angenehm.",
+    name: "Marc & Marlena",
+    occasion: "29.06.2024",
+  },
+  {
+    text: "Wir waren begeistert! Wir hatten die beiden bei unserer standesamtlichen Hochzeit dabei und unsere Erwartungen wurden mehr als übertroffen! Preislich top und eine riesen Auswahl an qualitativ hochwertigen Fotos aus verschiedenen Perspektiven!",
+    name: "Paoline & Matthias",
+    occasion: "25.08.2023",
+  },
+];
+
+const reasons = [
+  {
+    title: "Verschiedene Perspektiven",
+    text: "Zwei Fotografen bedeuten verschiedene Blickwinkel. So bleibt kein Moment unentdeckt!",
+  },
+  {
+    title: "Alles in einem",
+    text: "Fotos und Videos, wir haben beides im Griff. Egal, ob Hochzeit oder Familienfeier.",
+  },
+  {
+    title: "Effizient und Echt",
+    text: "Vier Hände, mehr Aufnahmen. Euer Tag wird dokumentiert, während ihr ihn lebt.",
+  },
+  {
+    title: "Eingespieltes Team",
+    text: "Unsere Harmonie sorgt für eine entspannte Atmosphäre. Authentizität steht bei uns an erster Stelle.",
+  },
+  {
+    title: "Doppelter Spaß",
+    text: "Mit uns wird nicht nur gearbeitet, sondern auch gelacht. Wir machen den Prozess genauso angenehm wie die Bilder.",
+  },
+  {
+    title: "Doppelte Aufmerksamkeit",
+    text: "Und selbstverständlich, weil eure Geschichte die doppelte Aufmerksamkeit verdient!",
+  },
+];
+
+const faqs = [
+  {
+    q: "Wann erhalten wir die Bilder?",
+    a: "Die Lieferzeit für eure Hochzeitsfotos variiert je nach Dauer der Feier und Jahreszeit. Kleine Hochzeiten bearbeiten wir in der Regel innerhalb von 14 Tagen, während größere Hochzeiten manchmal bis zu 30 Tage in Anspruch nehmen können. Wir verstehen, wie aufregend die Wartezeit auf die Bilder sein kann, und legen daher großen Wert auf eine zügige Bearbeitung. Die genaue Lieferzeit für eure Fotos wird im Vertrag festgelegt, damit ihr genau wisst, wann ihr mit euren Bildern rechnen könnt.",
+  },
+  {
+    q: "Wie werden uns die Bilder zur Verfügung gestellt?",
+    a: "Die Bilder werden euch in einer Online-Galerie zur Verfügung gestellt, die ihr ganz nach Belieben mit Freunden und Familie teilen könnt. Auf Wunsch richten wir die Galerie auch passwortgeschützt ein. Ihr habt die Möglichkeit, die Bilder in voller Auflösung und ohne Wasserzeichen herunterzuladen. Die Galerie bleibt für mindestens 3 Monate online, oftmals aber auch länger.",
+  },
+  {
+    q: "Wie und wann bezahlen wir?",
+    a: "Bei uns habt ihr die Wahl: Ihr könnt bequem per PayPal, Überweisung oder bei kleineren Beträgen auch in bar zahlen. Unsere Zahlungsbedingungen werden vertraglich festgelegt, um Transparenz und Sicherheit für beide Seiten zu gewährleisten. Bei Vertragsabschluss ist eine Anzahlung in Höhe von 20 % des Gesamtbetrags erforderlich. Diese Anzahlung wird selbstverständlich mit dem Gesamtbetrag verrechnet, der vor der Übergabe der Bilder vollständig beglichen werden muss.",
+  },
+  {
+    q: "Was passiert, wenn ihr ausfallt?",
+    a: "Dass wir beide gleichzeitig krank sind ist sehr unwahrscheinlich. Falls es doch passieren sollte, bemühen wir uns natürlich um einen Ersatzfotografen aus unserem Netzwerk!",
+  },
+  {
+    q: "Was kostet die fotografische Begleitung?",
+    a: "Unsere Preise beginnen bei 600 € und reichen bis zu 1.900 €. So groß wie die Spanne sind auch unsere Möglichkeiten euch ein individuelles Paket zusammenzustellen!",
+  },
+];
+---
+
+<BaseLayout
+  title="Hochzeitsfotografie – MiNi Photography"
+  description="Wir begleiten euren schönsten Tag mit Herz und Kamera. Authentische Hochzeitsfotografie von Miette & Nicolai aus Rodgau."
+>
+  <Nav />
+  <main id="main">
+
+    <!-- ─── Hero ─────────────────────────────────────────── -->
+    <section class="hz-hero" aria-label="Hochzeitsfotografie">
+      <div class="hz-hero__img">
+        <img
+          src="/images/angebote/Hochzeiten-Angebot.jpg"
+          alt="Hochzeitsfotografie – MiNi Photography"
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hz-hero__overlay"></div>
+      <div class="hz-hero__content">
+        <a href="/" class="hz-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="13" y1="8" x2="3" y2="8"/><polyline points="7,4 3,8 7,12"/>
+          </svg>
+          Startseite
+        </a>
+        <div class="hz-hero__text">
+          <h1 class="hz-hero__title">Hoch<em>zeiten</em></h1>
+        </div>
+      </div>
+      <div class="hz-hero__scroll" aria-hidden="true">
+        <div class="hz-hero__scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ─── Intro ─────────────────────────────────────────── -->
+    <section class="hz-intro">
+      <div class="hz-intro__inner">
+        <div class="hz-intro__text-col">
+          <blockquote class="hz-intro__quote">
+            Jedes Bild erzählt eine<br/>
+            <em>einzigartige Geschichte.</em>
+          </blockquote>
+          <div class="hz-intro__divider">
+            <span class="hz-intro__divider-line"></span>
+            <span class="hz-intro__divider-text">Wir sind hier, um sie für immer festzuhalten.</span>
+            <span class="hz-intro__divider-line"></span>
+          </div>
+          <div class="hz-intro__body">
+            <p>Feiert einen der wichtigsten Tage eures Lebens und haltet ihn für immer fest. Als Hochzeitsfotografen fangen wir die einzigartigen Momente, die Liebe und die Emotionen eurer Hochzeit ein.</p>
+            <p>Jedes Bild erzählt eine einzigartige Geschichte und lässt die kostbaren Erinnerungen wieder aufleben.</p>
+            <p>Mit einer Hochzeitsreportage halten wir eine zusammenhängende und stimmige Geschichte fest, die euch immer wieder in diesen wunderschönen Tag zurückversetzt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Warum zu zweit? ───────────────────────────────── -->
+    <section class="hz-why">
+      <div class="hz-why__inner">
+        <div class="hz-why__header">
+          <span class="section-label">Unser Konzept</span>
+          <h2 class="hz-why__heading">Warum<br/><em>zwei Fotografen?</em></h2>
+        </div>
+        <div class="hz-why__grid">
+          {reasons.map((r, i) => (
+            <div class="hz-why__card">
+              <span class="hz-why__num">0{i + 1}</span>
+              <h3 class="hz-why__title">{r.title}</h3>
+              <p class="hz-why__text">{r.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Portfolio Teaser ──────────────────────────────── -->
+    <section class="hz-portfolio">
+      <div class="hz-portfolio__inner">
+        <div class="hz-portfolio__text">
+          <span class="hz-portfolio__label">Unsere Arbeit</span>
+          <h2 class="hz-portfolio__heading">Bilder, die <em>bleiben.</em></h2>
+          <p class="hz-portfolio__body">Schaut euch unsere Hochzeitsreportagen an und lasst euch inspirieren. Jede Hochzeit ist anders – und jedes Portfolio erzählt eine neue Geschichte.</p>
+          <a href="/hochzeiten/portfolio" class="hz-portfolio__btn">
+            Portfolio ansehen
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+            </svg>
+          </a>
+        </div>
+        <div class="hz-portfolio__visual">
+          <div class="hz-portfolio__img-wrap">
+            <img src="/images/angebote/Hochzeiten-Angebot1.jpg" alt="Hochzeitsportfolio MiNi Photography" width="800" height="1000" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Rezensionen ───────────────────────────────────── -->
+    <section class="hz-reviews">
+      <div class="hz-reviews__header">
+        <span class="section-label">Was Paare sagen</span>
+        <h2 class="hz-reviews__heading">Stimmen, die<br/><em>uns bewegen.</em></h2>
+        <p class="hz-reviews__sub">Was Brautpaare nach ihrem Tag über uns erzählen.</p>
+      </div>
+      <div class="hz-reviews__grid">
+        {reviews.map((r) => (
+          <article class="hz-review">
+            <div class="hz-review__stars" aria-hidden="true">
+              {[1,2,3,4,5].map(() => (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <blockquote class="hz-review__text">„{r.text}"</blockquote>
+            <footer class="hz-review__footer">
+              <span class="hz-review__name">{r.name}</span>
+              <span class="hz-review__occasion">{r.occasion}</span>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ─── FAQ ──────────────────────────────────────────── -->
+    <section class="hz-faq">
+      <div class="hz-faq__inner">
+        <div class="hz-faq__header">
+          <span class="section-label">FAQ</span>
+          <h2 class="hz-faq__heading">Eure Fragen.<br/><em>Unsere Antworten.</em></h2>
+        </div>
+        <div class="hz-faq__list">
+          {faqs.map((item, i) => (
+            <details class="hz-faq__item" name="faq">
+              <summary class="hz-faq__question">
+                <span class="hz-faq__q-num">0{i + 1}</span>
+                <span>{item.q}</span>
+                <svg class="hz-faq__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="4,6 8,10 12,6"/>
+                </svg>
+              </summary>
+              <div class="hz-faq__answer">
+                <p>{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA ──────────────────────────────────────────── -->
+    <section class="hz-cta">
+      <div class="hz-cta__inner">
+        <span class="hz-cta__eyebrow">Schreibt uns!</span>
+        <div class="hz-cta__image">
+          <img src="/images/cta/uns-bei-der-arbeit.jpg" alt="Miette und Nicolai bei der Arbeit" loading="lazy" />
+        </div>
+        <h2 class="hz-cta__heading">Gemeinsam verewigen wir<br/><em>eure schönsten Momente.</em></h2>
+        <a href="/#kontakt" class="hz-cta__btn">
+          Kontakt
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ─── Hero ────────────────────────────────────────────────── */
+.hz-hero {
+  position: relative;
+  height: 100dvh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hz-hero__img {
+  position: absolute;
+  inset: 0;
+}
+
+.hz-hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: hzBreathe 10s ease-in-out infinite;
+}
+
+@keyframes hzBreathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.035); }
+}
+
+.hz-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(30,20,16,0.85) 0%, rgba(30,20,16,0.25) 50%, rgba(30,20,16,0.1) 100%),
+    linear-gradient(to right, rgba(30,20,16,0.3) 0%, transparent 60%);
+}
+
+.hz-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-16) var(--container-gutter);
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.hz-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,252,250,0.6);
+  transition: color 0.3s ease;
+  margin-top: 120px;
+}
+
+.hz-hero__back:hover { color: rgba(255,252,250,0.9); }
+
+.hz-hero__text {
+  padding-bottom: var(--space-8);
+}
+
+.hz-hero__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: #c4b5ac;
+  margin-bottom: var(--space-4);
+  opacity: 0;
+  animation: hzFadeUp 0.8s ease forwards 0.2s;
+}
+
+.hz-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 10rem);
+  font-weight: 700;
+  color: #fffcfa;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: hzFadeUp 1s ease forwards 0.4s;
+}
+
+.hz-hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: #c4b5ac;
+}
+
+.hz-hero__sub {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,252,250,0.7);
+  margin-top: var(--space-4);
+  opacity: 0;
+  animation: hzFadeUp 0.9s ease forwards 0.65s;
+}
+
+.hz-hero__scroll {
+  position: absolute;
+  bottom: var(--space-8);
+  right: var(--container-gutter);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(196,181,172,0.6);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  opacity: 0;
+  animation: hzFadeUp 1s ease forwards 1s;
+}
+
+.hz-hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, rgba(196,181,172,0.5));
+  margin-bottom: var(--space-2);
+}
+
+@keyframes hzFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Intro ────────────────────────────────────────────────── */
+.hz-intro {
+  background: var(--color-cream);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.hz-intro__inner {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.hz-intro__text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hz-intro__quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-bark);
+  margin-bottom: var(--space-8);
+  border: none;
+  text-align: center;
+}
+
+.hz-intro__quote em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.hz-intro__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: var(--space-8) 0;
+  width: 100%;
+}
+
+.hz-intro__divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-sand), transparent);
+}
+
+.hz-intro__divider-text {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 720px) {
+  .hz-intro__divider-text {
+    white-space: normal;
+    text-align: center;
+    letter-spacing: 0.18em;
+  }
+}
+
+.hz-intro__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-10);
+  align-items: center;
+  width: 100%;
+}
+
+.hz-intro__body p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.8;
+  max-width: 58ch;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ─── Warum zu zweit? ──────────────────────────────────────── */
+.hz-why {
+  background: var(--color-parchment);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+}
+
+.hz-why__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.hz-why__header {
+  position: sticky;
+  top: 120px;
+}
+
+.hz-why__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.1;
+  margin-top: var(--space-3);
+}
+
+.hz-why__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.hz-why__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.hz-why__card {
+  background: var(--color-cream);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  border-top: 2px solid var(--color-sand);
+  transition: border-top-color 0.3s ease, transform 0.3s ease;
+}
+
+.hz-why__card:hover {
+  border-top-color: var(--color-clay);
+  transform: translateY(-3px);
+}
+
+.hz-why__num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--color-clay);
+}
+
+.hz-why__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--color-bark);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.hz-why__text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .hz-why__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .hz-why__header { position: static; }
+  .hz-why__grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Portfolio ────────────────────────────────────────────── */
+.hz-portfolio {
+  background: var(--color-cream);
+  overflow: hidden;
+}
+
+.hz-portfolio__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 0 var(--container-gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 70vh;
+  gap: var(--space-16);
+}
+
+.hz-portfolio__text {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+.hz-portfolio__label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  margin-bottom: var(--space-6);
+}
+
+.hz-portfolio__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-6);
+  white-space: nowrap;
+}
+
+@media (max-width: 540px) {
+  .hz-portfolio__heading {
+    white-space: normal;
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+}
+
+.hz-portfolio__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.hz-portfolio__body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+  max-width: 44ch;
+  margin-bottom: var(--space-16);
+}
+
+.hz-portfolio__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  border: 1px solid rgba(92,72,67,0.3);
+  padding: var(--space-4) var(--space-8);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.hz-portfolio__btn:hover {
+  background: rgba(145,124,113,0.1);
+  border-color: rgba(92,72,67,0.6);
+}
+
+.hz-portfolio__btn svg {
+  transition: transform 0.25s ease;
+}
+
+.hz-portfolio__btn:hover svg {
+  transform: translateX(5px);
+}
+
+.hz-portfolio__visual {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.hz-portfolio__img-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  overflow: hidden;
+}
+
+.hz-portfolio__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: sepia(0.1) contrast(1.05);
+  transition: transform 0.8s ease;
+}
+
+.hz-portfolio__img-wrap:hover img {
+  transform: scale(1.03);
+}
+
+/* ─── Reviews ──────────────────────────────────────────────── */
+.hz-reviews {
+  background: #ECE4DB;
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+  overflow: hidden;
+}
+
+.hz-reviews__header {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.hz-reviews__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.1;
+  margin-top: var(--space-3);
+}
+
+.hz-reviews__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.hz-reviews__sub {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  margin-top: var(--space-4);
+}
+
+.hz-reviews__grid {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .hz-reviews__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .hz-reviews__grid { grid-template-columns: 1fr; }
+}
+
+.hz-review {
+  background: var(--color-cream);
+  padding: var(--space-8) var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  position: relative;
+}
+
+.hz-review::before {
+  content: '\201C';
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: rgba(196,181,172,0.2);
+  line-height: 1;
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-6);
+  pointer-events: none;
+}
+
+.hz-review__stars {
+  display: flex;
+  gap: 3px;
+  color: #c4956a;
+}
+
+.hz-review__text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-bark);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.hz-review__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(196,181,172,0.25);
+}
+
+.hz-review__name {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+}
+
+.hz-review__occasion {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--color-clay);
+  letter-spacing: 0.04em;
+}
+
+/* ─── FAQ ──────────────────────────────────────────────────── */
+.hz-faq {
+  background: var(--color-cream);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+}
+
+.hz-faq__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.hz-faq__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.15;
+  margin-top: var(--space-3);
+  position: sticky;
+  top: 120px;
+}
+
+.hz-faq__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.hz-faq__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hz-faq__item {
+  border-top: 1px solid rgba(196,181,172,0.3);
+}
+
+.hz-faq__item:last-child {
+  border-bottom: 1px solid rgba(196,181,172,0.3);
+}
+
+.hz-faq__question {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6) 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  transition: color 0.25s ease;
+  user-select: none;
+}
+
+.hz-faq__question::-webkit-details-marker { display: none; }
+.hz-faq__question::marker { display: none; }
+
+.hz-faq__question:hover {
+  color: var(--color-clay);
+}
+
+.hz-faq__q-num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--color-sand);
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.hz-faq__question span:not(.hz-faq__q-num) {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.hz-faq__chevron {
+  flex-shrink: 0;
+  color: var(--color-sand);
+  transition: transform 0.3s ease;
+}
+
+details[open] .hz-faq__chevron {
+  transform: rotate(180deg);
+}
+
+.hz-faq__answer {
+  padding: 0 0 var(--space-6) calc(28px + var(--space-4));
+  animation: hzFadeDown 0.3s ease;
+}
+
+@keyframes hzFadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hz-faq__answer p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+  max-width: 60ch;
+}
+
+/* ─── CTA ──────────────────────────────────────────────────── */
+.hz-cta {
+  background: var(--color-parchment);
+  padding: clamp(5rem, 10vw, 10rem) var(--container-gutter);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hz-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.hz-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.hz-cta__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  margin-bottom: var(--space-6);
+}
+
+.hz-cta__image {
+  display: block;
+  width: clamp(200px, 30vw, 280px);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  margin-bottom: var(--space-10);
+  overflow: hidden;
+}
+
+.hz-cta__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hz-cta__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-12);
+}
+
+.hz-cta__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.hz-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  border: 1px solid rgba(92,72,67,0.3);
+  padding: var(--space-4) var(--space-8);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.hz-cta__btn:hover {
+  background: rgba(145,124,113,0.1);
+  border-color: rgba(92,72,67,0.6);
+}
+
+.hz-cta__btn svg {
+  transition: transform 0.25s ease;
+}
+
+.hz-cta__btn:hover svg {
+  transform: translateX(5px);
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hz-portfolio__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hz-portfolio__visual { min-height: 50vw; }
+
+.hz-faq__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .hz-faq__heading {
+    position: static;
+  }
+}
+
+@media (max-width: 540px) {
+  .hz-hero__scroll { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hz-hero__img img { animation: none; }
+  .hz-hero__eyebrow, .hz-hero__title, .hz-hero__sub, .hz-hero__scroll { opacity: 1; animation: none; }
+  .hz-faq__answer { animation: none; }
+}
+</style>
+

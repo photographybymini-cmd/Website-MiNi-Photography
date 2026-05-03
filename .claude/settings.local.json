@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Read(//Users/nicolai/.claude/skills/frontend-design/**)",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(uipro init *)",
+      "Bash(uipro --help)",
+      "Bash(cp -r \"/Volumes/Crucial 2TB SSD/Website 2/.claude/skills/ui-ux-pro-max\" ~/.claude/skills/)",
+      "Bash(cp -r \"/Volumes/Crucial 2TB SSD/Website 2/.claude/skills/ui-ux-pro-max\" \"/Volumes/Crucial 2TB SSD/Website 2/.agents/skills/\")",
+      "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"photography portfolio wedding authentic emotional\" --design-system -p \"MiNi Photography\")",
+      "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"photography portfolio authentic\" --domain typography)",
+      "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"portfolio photography landing\" --domain landing)",
+      "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"elegant serif luxury editorial\" --domain typography)",
+      "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"animation scroll reveal gallery\" --domain ux)",
+      "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"dark moody atmospheric organic nature\" --domain style)",
+      "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"wedding photography service elegant\" --domain color)",
+      "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"masonry grid gallery css columns\" --domain ux)",
+      "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"contact form static netlify formspree\" --domain ux)",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/)"
+    ]
+  }
+}

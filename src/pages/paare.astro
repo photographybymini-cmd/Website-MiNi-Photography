@@ -1,0 +1,818 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/subpage.css';
+
+const reasons = [
+  {
+    title: "Abenteuer & Freude",
+    text: "Ein Fotoshooting bietet nicht nur die Möglichkeit, wunderschöne Bilder zu erhalten, sondern ist auch eine spaßige Erfahrung. Es ist eine Gelegenheit, gemeinsam zu lachen und eine schöne Zeit miteinander zu verbringen.",
+    image: "/images/paare/abenteuer-freude.jpg",
+  },
+  {
+    title: "Dekoration für Zuhause",
+    text: "Die entstandenen Fotos können euer Zuhause schmücken und als einzigartige Kunstwerke täglich an eure Liebe und die gemeinsame Zeit erinnern.",
+    image: "/images/paare/dekoration-zuhause.jpg",
+  },
+  {
+    title: "Erinnerungen schaffen",
+    text: "Mit zunehmendem Alter und in verschiedenen Lebensphasen entstehen einzigartige und kostbare Erinnerungen. Ein Fotoshooting ermöglicht es, diese Momente festzuhalten und sie für immer als Erinnerung zu bewahren.",
+    image: "/images/paare/erinnerungen-schaffen.jpg",
+  },
+];
+
+const faqs = [
+  {
+    q: "Wann erhalten wir die Bilder?",
+    a: "Nach spätestens 10 Tagen erhaltet ihr die bearbeiteten Bilder über einen Link zu einer Online-Galerie von uns. Dort könnt ihr die Bilder herunterladen und teilen.",
+  },
+  {
+    q: "Wie werden uns die Bilder zur Verfügung gestellt?",
+    a: "Die Bilder werden euch in einer Online-Galerie zur Verfügung gestellt, die ihr ganz nach Belieben mit Freunden und Familie teilen könnt. Auf Wunsch richten wir die Galerie auch passwortgeschützt ein. Ihr habt die Möglichkeit, die Bilder in voller Auflösung und ohne Wasserzeichen herunterzuladen. Die Galerie bleibt für mindestens 3 Monate online, oftmals aber auch länger.",
+  },
+  {
+    q: "Wie und wann bezahlen wir?",
+    a: "Bei uns habt ihr die Wahl: Ihr könnt bequem per PayPal, Überweisung oder bei kleineren Beträgen auch in bar zahlen. Unsere Zahlungsbedingungen werden vertraglich festgelegt, um Transparenz und Sicherheit für beide Seiten zu gewährleisten.",
+  },
+  {
+    q: "Was passiert, wenn ihr ausfallt?",
+    a: "Dass wir beide krank sind ist sehr unwahrscheinlich. Falls es wirklich so sein sollte, können wir den Termin natürlich verschieben. Das gilt auch, wenn ihr erkranken solltet.",
+  },
+  {
+    q: "Was kostet ein Paarshooting?",
+    a: "Unsere Preise beginnen bei 100 € und reichen bis zu 200 €. Das richtet sich nach der Länge des Shootings und der Anzahl der Bilder, die ihr gerne haben möchtet.",
+  },
+];
+---
+
+<BaseLayout
+  title="Paarfotografie – MiNi Photography"
+  description="Natürliche und ungestellte Paarfotografie von Miette & Nicolai. Eure Liebe, eingefangen in echten Momenten."
+>
+  <Nav />
+  <main id="main">
+
+    <!-- ─── Hero ─────────────────────────────────────────── -->
+    <section class="pa-hero" aria-label="Paarfotografie">
+      <div class="pa-hero__img">
+        <img
+          src="/images/angebote/Paare-Angebot.jpg"
+          alt="Paarfotografie – MiNi Photography"
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="pa-hero__overlay"></div>
+      <div class="pa-hero__content">
+        <a href="/" class="pa-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="13" y1="8" x2="3" y2="8"/><polyline points="7,4 3,8 7,12"/>
+          </svg>
+          Startseite
+        </a>
+        <div class="pa-hero__text">
+          <h1 class="pa-hero__title">Paare</h1>
+        </div>
+      </div>
+      <div class="pa-hero__scroll" aria-hidden="true">
+        <div class="pa-hero__scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ─── Intro ─────────────────────────────────────────── -->
+    <section class="pa-intro">
+      <div class="pa-intro__inner">
+        <blockquote class="pa-intro__quote">
+          Wir halten eure Liebe<br/>
+          <em>in Bildern fest.</em>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ─── 3 Gründe ──────────────────────────────────────── -->
+    <section class="pa-reasons">
+      <div class="pa-reasons__inner">
+        <div class="pa-reasons__header">
+          <h2 class="pa-reasons__heading">3 Gründe für ein <em>Paarshooting.</em></h2>
+        </div>
+        <div class="pa-reasons__grid">
+          {reasons.map((r, i) => (
+            <div class="pa-reasons__card">
+              <div class="pa-reasons__head">
+                <span class="pa-reasons__num">0{i + 1}</span>
+                <h3 class="pa-reasons__title">{r.title}</h3>
+              </div>
+              <div class="pa-reasons__split">
+                <div class="pa-reasons__image">
+                  <img src={r.image} alt={r.title} loading="lazy" />
+                </div>
+                <p class="pa-reasons__text">{r.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Portfolio Teaser ──────────────────────────────── -->
+    <section class="pa-portfolio">
+      <div class="pa-portfolio__inner">
+        <div class="pa-portfolio__text">
+          <span class="pa-portfolio__label">Unsere Arbeit</span>
+          <h2 class="pa-portfolio__heading">Eure Liebe, <em>in Bildern.</em></h2>
+          <p class="pa-portfolio__body">Schaut euch unsere Paargalerie an und lasst euch inspirieren. Jedes Paar bringt seine eigene Energie mit – und genau das halten wir fest.</p>
+          <a href="/paare/portfolio" class="pa-portfolio__btn">
+            Portfolio ansehen
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+            </svg>
+          </a>
+        </div>
+        <div class="pa-portfolio__visual">
+          <div class="pa-portfolio__img-wrap">
+            <img src="/images/angebote/Paare-Angebot.jpg" alt="Paarportfolio MiNi Photography" width="800" height="1000" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FAQ ──────────────────────────────────────────── -->
+    <section class="pa-faq">
+      <div class="pa-faq__inner">
+        <div class="pa-faq__header">
+          <span class="section-label">FAQ</span>
+          <h2 class="pa-faq__heading">Eure Fragen.<br/><em>Unsere Antworten.</em></h2>
+        </div>
+        <div class="pa-faq__list">
+          {faqs.map((item, i) => (
+            <details class="pa-faq__item" name="paare-faq">
+              <summary class="pa-faq__question">
+                <span class="pa-faq__q-num">0{i + 1}</span>
+                <span>{item.q}</span>
+                <svg class="pa-faq__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="4,6 8,10 12,6"/>
+                </svg>
+              </summary>
+              <div class="pa-faq__answer">
+                <p>{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA ──────────────────────────────────────────── -->
+    <section class="pa-cta">
+      <div class="pa-cta__inner">
+        <span class="pa-cta__eyebrow">Schreibt uns!</span>
+        <div class="pa-cta__image">
+          <img src="/images/cta/uns-bei-der-arbeit.jpg" alt="Miette und Nicolai bei der Arbeit" loading="lazy" />
+        </div>
+        <h2 class="pa-cta__heading">Gemeinsam verewigen wir<br/><em>eure schönsten Momente.</em></h2>
+        <a href="/#kontakt" class="pa-cta__btn">
+          Kontakt
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ─── Hero ────────────────────────────────────────────────── */
+.pa-hero {
+  position: relative;
+  height: 100dvh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.pa-hero__img {
+  position: absolute;
+  inset: 0;
+}
+
+.pa-hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: paBreathe 10s ease-in-out infinite;
+}
+
+@keyframes paBreathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.035); }
+}
+
+.pa-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(30,20,16,0.85) 0%, rgba(30,20,16,0.25) 50%, rgba(30,20,16,0.1) 100%),
+    linear-gradient(to right, rgba(30,20,16,0.3) 0%, transparent 60%);
+}
+
+.pa-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-16) var(--container-gutter);
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.pa-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,252,250,0.6);
+  transition: color 0.3s ease;
+  margin-top: 120px;
+}
+
+.pa-hero__back:hover { color: rgba(255,252,250,0.9); }
+
+.pa-hero__text {
+  padding-bottom: var(--space-8);
+}
+
+.pa-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 10rem);
+  font-weight: 700;
+  color: #fffcfa;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: paFadeUp 1s ease forwards 0.4s;
+}
+
+.pa-hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: #c4b5ac;
+}
+
+.pa-hero__scroll {
+  position: absolute;
+  bottom: var(--space-8);
+  right: var(--container-gutter);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(196,181,172,0.6);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  opacity: 0;
+  animation: paFadeUp 1s ease forwards 1s;
+}
+
+.pa-hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, rgba(196,181,172,0.5));
+  margin-bottom: var(--space-2);
+}
+
+@keyframes paFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Intro ────────────────────────────────────────────────── */
+.pa-intro {
+  background: var(--color-cream);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.pa-intro__inner {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.pa-intro__quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-bark);
+  margin: 0;
+  border: none;
+  text-align: center;
+}
+
+.pa-intro__quote em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+/* ─── Reasons ──────────────────────────────────────────────── */
+.pa-reasons {
+  background: var(--color-parchment);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+}
+
+.pa-reasons__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.pa-reasons__header {
+  text-align: center;
+}
+
+.pa-reasons__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.15;
+  margin: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .pa-reasons__heading {
+    white-space: normal;
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
+    text-wrap: balance;
+  }
+}
+
+.pa-reasons__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.pa-reasons__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.pa-reasons__card {
+  background: var(--color-cream);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8);
+  border-top: 2px solid var(--color-sand);
+  transition: border-top-color 0.3s ease, transform 0.3s ease;
+}
+
+.pa-reasons__card:hover {
+  border-top-color: var(--color-clay);
+  transform: translateY(-3px);
+}
+
+.pa-reasons__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.pa-reasons__split {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.pa-reasons__image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.pa-reasons__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .pa-reasons__split {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .pa-reasons__image {
+    max-width: 220px;
+  }
+}
+
+.pa-reasons__num {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--color-clay);
+}
+
+.pa-reasons__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.pa-reasons__text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+  margin: 0;
+  max-width: 60ch;
+}
+
+@media (max-width: 900px) {
+  .pa-reasons__inner {
+    gap: var(--space-8);
+  }
+}
+
+/* ─── Portfolio ────────────────────────────────────────────── */
+.pa-portfolio {
+  background: var(--color-cream);
+  overflow: hidden;
+}
+
+.pa-portfolio__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 0 var(--container-gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 70vh;
+  gap: var(--space-16);
+}
+
+.pa-portfolio__text {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+.pa-portfolio__label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  margin-bottom: var(--space-6);
+}
+
+.pa-portfolio__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-6);
+  white-space: nowrap;
+}
+
+@media (max-width: 540px) {
+  .pa-portfolio__heading {
+    white-space: normal;
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+}
+
+.pa-portfolio__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.pa-portfolio__body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+  max-width: 44ch;
+  margin-bottom: var(--space-16);
+}
+
+.pa-portfolio__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  border: 1px solid rgba(92,72,67,0.3);
+  padding: var(--space-4) var(--space-8);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.pa-portfolio__btn:hover {
+  background: rgba(145,124,113,0.1);
+  border-color: rgba(92,72,67,0.6);
+}
+
+.pa-portfolio__btn svg {
+  transition: transform 0.25s ease;
+}
+
+.pa-portfolio__btn:hover svg {
+  transform: translateX(5px);
+}
+
+.pa-portfolio__visual {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.pa-portfolio__img-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  overflow: hidden;
+}
+
+.pa-portfolio__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: sepia(0.1) contrast(1.05);
+  transition: transform 0.8s ease;
+}
+
+.pa-portfolio__img-wrap:hover img {
+  transform: scale(1.03);
+}
+
+/* ─── FAQ ──────────────────────────────────────────────────── */
+.pa-faq {
+  background: var(--color-parchment);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+}
+
+.pa-faq__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.pa-faq__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.15;
+  margin-top: var(--space-3);
+  position: sticky;
+  top: 120px;
+}
+
+.pa-faq__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.pa-faq__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.pa-faq__item {
+  border-top: 1px solid rgba(196,181,172,0.4);
+}
+
+.pa-faq__item:last-child {
+  border-bottom: 1px solid rgba(196,181,172,0.4);
+}
+
+.pa-faq__question {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6) 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  transition: color 0.25s ease;
+  user-select: none;
+}
+
+.pa-faq__question::-webkit-details-marker { display: none; }
+.pa-faq__question::marker { display: none; }
+
+.pa-faq__question:hover {
+  color: var(--color-clay);
+}
+
+.pa-faq__q-num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-clay);
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.pa-faq__question span:not(.pa-faq__q-num) {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.pa-faq__chevron {
+  flex-shrink: 0;
+  color: var(--color-clay);
+  transition: transform 0.3s ease;
+}
+
+details[open] .pa-faq__chevron {
+  transform: rotate(180deg);
+}
+
+.pa-faq__answer {
+  padding: 0 0 var(--space-6) calc(28px + var(--space-4));
+  animation: paFadeDown 0.3s ease;
+}
+
+@keyframes paFadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pa-faq__answer p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+  max-width: 60ch;
+}
+
+/* ─── CTA ──────────────────────────────────────────────────── */
+.pa-cta {
+  background: var(--color-cream);
+  padding: clamp(5rem, 10vw, 10rem) var(--container-gutter);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pa-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.pa-cta__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  margin-bottom: var(--space-6);
+}
+
+.pa-cta__image {
+  display: block;
+  width: clamp(200px, 30vw, 280px);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  margin-bottom: var(--space-10);
+  overflow: hidden;
+}
+
+.pa-cta__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.pa-cta__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-12);
+}
+
+.pa-cta__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.pa-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  border: 1px solid rgba(92,72,67,0.3);
+  padding: var(--space-4) var(--space-8);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.pa-cta__btn:hover {
+  background: rgba(145,124,113,0.1);
+  border-color: rgba(92,72,67,0.6);
+}
+
+.pa-cta__btn svg {
+  transition: transform 0.25s ease;
+}
+
+.pa-cta__btn:hover svg {
+  transform: translateX(5px);
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .pa-portfolio__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .pa-portfolio__visual { min-height: 50vw; }
+
+  .pa-faq__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .pa-faq__heading {
+    position: static;
+  }
+}
+
+@media (max-width: 540px) {
+  .pa-hero__scroll { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pa-hero__img img { animation: none; }
+  .pa-hero__title, .pa-hero__scroll { opacity: 1; animation: none; }
+  .pa-faq__answer { animation: none; }
+}
+</style>
