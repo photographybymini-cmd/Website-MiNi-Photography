@@ -20,7 +20,9 @@
       "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"masonry grid gallery css columns\" --domain ux)",
       "Bash(python3 .agents/skills/ui-ux-pro-max/scripts/search.py \"contact form static netlify formspree\" --domain ux)",
       "Bash(python3 -c ' *)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/)",
+      "Bash(npx --yes sharp-cli --version)",
+      "Bash(node -e \"require\\('sharp'\\)\")"
     ]
   }
 }
