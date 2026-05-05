@@ -1,6 +1,6 @@
 /* ─── Footer ─────────────────────────────────────────────── */
 .footer {
-  background-color: var(--color-ink);
+  background-color: var(--color-cream);
   padding: var(--space-8) 0;
 }
 
@@ -17,37 +17,42 @@
   font-size: var(--text-label);
   font-weight: 300;
   letter-spacing: 0.15em;
-  color: rgba(145, 124, 113, 0.6);
+  color: var(--color-bark);
 }
 
-.footer__nav {
-  display: flex;
+.footer__top {
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-6);
-}
-
-.footer__link {
+  gap: var(--space-2);
   font-family: var(--font-body);
   font-size: var(--text-label);
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(145, 124, 113, 0.5);
+  color: var(--color-clay);
   transition: color var(--transition-base);
-  cursor: pointer;
 }
 
-.footer__link:hover {
-  color: var(--color-sand);
+.footer__top:hover {
+  color: var(--color-bark);
 }
 
+.footer__top svg {
+  transition: transform 0.25s ease;
+}
+
+.footer__top:hover svg {
+  transform: translateY(-3px);
+}
+
+/* Legal */
 .footer__legal {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   margin-top: var(--space-6);
   padding-top: var(--space-6);
-  border-top: 1px solid rgba(145, 124, 113, 0.15);
+  border-top: 1px solid rgba(92, 72, 67, 0.15);
 }
 
 .footer__legal-link {
@@ -55,16 +60,16 @@
   font-size: var(--text-label);
   font-weight: 300;
   letter-spacing: 0.15em;
-  color: rgba(145, 124, 113, 0.4);
+  color: var(--color-clay);
   transition: color var(--transition-base);
 }
 
 .footer__legal-link:hover {
-  color: var(--color-sand);
+  color: var(--color-bark);
 }
 
 .footer__legal-dot {
-  color: rgba(145, 124, 113, 0.25);
+  color: var(--color-sand);
   font-size: var(--text-label);
 }
 

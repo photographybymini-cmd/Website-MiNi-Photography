@@ -2,8 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/subpage.css';
-
 const reviews = [
   {
     text: "Wir sind so glücklich mit unseren Hochzeitsaufnahmen. Danke dass wir unsere Erinnerungen an diesen besondern Tag, so schön aufbewahren können. Sehr angenehme, liebe Menschen.",
@@ -132,25 +130,6 @@ const faqs = [
       </div>
     </section>
 
-    <!-- ─── Warum zu zweit? ───────────────────────────────── -->
-    <section class="hz-why">
-      <div class="hz-why__inner">
-        <div class="hz-why__header">
-          <span class="section-label">Unser Konzept</span>
-          <h2 class="hz-why__heading">Warum<br/><em>zwei Fotografen?</em></h2>
-        </div>
-        <div class="hz-why__grid">
-          {reasons.map((r, i) => (
-            <div class="hz-why__card">
-              <span class="hz-why__num">0{i + 1}</span>
-              <h3 class="hz-why__title">{r.title}</h3>
-              <p class="hz-why__text">{r.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <!-- ─── Portfolio Teaser ──────────────────────────────── -->
     <section class="hz-portfolio">
       <div class="hz-portfolio__inner">
@@ -197,6 +176,27 @@ const faqs = [
             </footer>
           </article>
         ))}
+      </div>
+    </section>
+
+    <!-- ─── Warum zu zweit? ───────────────────────────────── -->
+    <section class="hz-why">
+      <div class="hz-why__inner">
+        <div class="hz-why__body">
+          <div class="hz-why__text">
+            <h2 class="hz-why__heading">Warum zwei <em>Fotografen.</em></h2>
+            <ul class="hz-why__list">
+              {reasons.map((r) => (
+                <li class="hz-why__item">
+                  <strong>{r.title}:</strong> {r.text}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="hz-why__visual">
+            <img src="/images/cta/uns-bei-der-arbeit.jpg" alt="Miette und Nicolai bei der Arbeit" loading="lazy" />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -482,30 +482,34 @@ const faqs = [
 /* ─── Warum zu zweit? ──────────────────────────────────────── */
 .hz-why {
   background: var(--color-parchment);
-  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+  padding: clamp(3rem, 5vw, 5rem) var(--container-gutter);
 }
 
 .hz-why__inner {
   max-width: var(--container-max);
   margin-inline: auto;
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: var(--space-16);
-  align-items: start;
 }
 
-.hz-why__header {
-  position: sticky;
-  top: 120px;
+.hz-why__body {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.hz-why__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
 }
 
 .hz-why__heading {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 500;
   color: var(--color-bark);
   line-height: 1.1;
-  margin-top: var(--space-3);
+  margin: 0;
 }
 
 .hz-why__heading em {
@@ -514,65 +518,53 @@ const faqs = [
   color: var(--color-clay);
 }
 
-.hz-why__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.hz-why__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-6);
 }
 
-.hz-why__card {
-  background: var(--color-cream);
-  padding: var(--space-8) var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  border-top: 2px solid var(--color-sand);
-  transition: border-top-color 0.3s ease, transform 0.3s ease;
-}
-
-.hz-why__card:hover {
-  border-top-color: var(--color-clay);
-  transform: translateY(-3px);
-}
-
-.hz-why__num {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: var(--color-clay);
-}
-
-.hz-why__title {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--color-bark);
-  margin: 0;
-  line-height: 1.3;
-}
-
-.hz-why__text {
+.hz-why__item {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--color-bark);
-  line-height: 1.7;
-  margin: 0;
+  line-height: 1.75;
+}
+
+.hz-why__item strong {
+  font-weight: 600;
+}
+
+.hz-why__visual {
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+
+.hz-why__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 
 @media (max-width: 900px) {
-  .hz-why__inner {
+  .hz-why__body {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
   }
-  .hz-why__header { position: static; }
-  .hz-why__grid { grid-template-columns: 1fr; }
+  .hz-why__visual {
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+  }
 }
 
 /* ─── Portfolio ────────────────────────────────────────────── */
 .hz-portfolio {
-  background: var(--color-cream);
+  background: var(--color-parchment);
   overflow: hidden;
 }
 
@@ -693,7 +685,7 @@ const faqs = [
 
 /* ─── Reviews ──────────────────────────────────────────────── */
 .hz-reviews {
-  background: #ECE4DB;
+  background: var(--color-cream);
   padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
   overflow: hidden;
 }
@@ -723,7 +715,7 @@ const faqs = [
   font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 400;
-  color: var(--color-bark);
+  color: var(--color-clay);
   margin-top: var(--space-4);
 }
 
@@ -744,7 +736,7 @@ const faqs = [
 }
 
 .hz-review {
-  background: var(--color-cream);
+  background: var(--color-parchment);
   padding: var(--space-8) var(--space-8) var(--space-6);
   display: flex;
   flex-direction: column;
@@ -876,7 +868,7 @@ const faqs = [
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 300;
-  color: var(--color-sand);
+  color: var(--color-clay);
   flex-shrink: 0;
   width: 28px;
 }
@@ -888,7 +880,7 @@ const faqs = [
 
 .hz-faq__chevron {
   flex-shrink: 0;
-  color: var(--color-sand);
+  color: var(--color-clay);
   transition: transform 0.3s ease;
 }
 
@@ -918,7 +910,7 @@ details[open] .hz-faq__chevron {
 /* ─── CTA ──────────────────────────────────────────────────── */
 .hz-cta {
   background: var(--color-parchment);
-  padding: clamp(5rem, 10vw, 10rem) var(--container-gutter);
+  padding: clamp(3rem, 6vw, 5rem) var(--container-gutter);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -943,19 +935,19 @@ details[open] .hz-faq__chevron {
 .hz-cta__eyebrow {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: var(--color-bark);
+  color: var(--color-ink);
   margin-bottom: var(--space-6);
 }
 
 .hz-cta__image {
   display: block;
-  width: clamp(200px, 30vw, 280px);
+  width: clamp(100px, 15vw, 160px);
   aspect-ratio: 1 / 1;
   margin-inline: auto;
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-6);
   overflow: hidden;
 }
 
@@ -974,7 +966,7 @@ details[open] .hz-faq__chevron {
   color: var(--color-bark);
   line-height: 1.15;
   letter-spacing: -0.01em;
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-8);
 }
 
 .hz-cta__heading em {
@@ -1019,13 +1011,57 @@ details[open] .hz-faq__chevron {
 
   .hz-portfolio__visual { min-height: 50vw; }
 
-.hz-faq__inner {
+  .hz-faq__inner {
     grid-template-columns: 1fr;
     gap: var(--space-8);
   }
 
   .hz-faq__heading {
     position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .hz-portfolio__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-8);
+    padding: clamp(3rem, 8vw, 5rem) var(--container-gutter);
+    min-height: unset;
+  }
+
+  .hz-portfolio__text {
+    display: contents;
+  }
+
+  .hz-portfolio__label,
+  .hz-portfolio__body {
+    display: none;
+  }
+
+  .hz-portfolio__heading {
+    order: 1;
+    text-align: center;
+    white-space: normal;
+    margin-bottom: 0;
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .hz-portfolio__visual {
+    order: 2;
+    min-height: unset;
+    height: auto;
+  }
+
+  .hz-portfolio__img-wrap {
+    min-height: unset;
+    aspect-ratio: 4 / 3;
+  }
+
+  .hz-portfolio__btn {
+    order: 3;
+    justify-content: center;
   }
 }
 

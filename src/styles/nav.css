@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6) var(--container-gutter);
+  padding: 1.25rem var(--container-gutter);
   transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
 }
 
@@ -94,6 +94,75 @@
   transform: scaleX(1);
 }
 
+/* Dropdown */
+.nav__dropdown {
+  position: relative;
+}
+
+.nav__dropdown-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  padding-bottom: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav__dropdown-arrow {
+  transition: transform var(--transition-base);
+  flex-shrink: 0;
+}
+
+.nav__dropdown:hover .nav__dropdown-arrow,
+.nav__dropdown-trigger[aria-expanded="true"] .nav__dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.nav__submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: rgba(255, 252, 250, 0.98);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(92, 72, 67, 0.15), 0 1px 0 rgba(92, 72, 67, 0.08);
+  padding: 12px 0;
+  min-width: 210px;
+  list-style: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav__dropdown:hover .nav__submenu,
+.nav__dropdown-trigger[aria-expanded="true"] + .nav__submenu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav__submenu-link {
+  display: block;
+  padding: 10px 24px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+  transition: color var(--transition-base), background-color var(--transition-base);
+  white-space: nowrap;
+}
+
+.nav__submenu-link:hover {
+  color: var(--color-bark);
+  background-color: rgba(92, 72, 67, 0.06);
+}
+
 /* Instagram */
 .nav__instagram {
   position: absolute;
@@ -150,15 +219,26 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: var(--color-bark);
+  background: var(--color-parchment);
   z-index: var(--z-overlay);
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-8);
+  align-items: stretch;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
+}
+
+.nav__overlay-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 80px var(--space-8) 60px;
+  min-height: 100%;
 }
 
 .nav__overlay.open {
@@ -168,29 +248,87 @@
 
 .nav__overlay-close {
   position: absolute;
-  top: var(--space-6);
+  top: 1.25rem;
   right: var(--container-gutter);
   width: 44px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-sand);
+  color: var(--color-bark);
   cursor: pointer;
   font-size: 1.5rem;
 }
 
 .nav__overlay-link {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   font-weight: 300;
-  color: var(--color-cream);
+  color: var(--color-bark);
   letter-spacing: 0.05em;
   transition: color var(--transition-base);
 }
 
 .nav__overlay-link:hover {
-  color: var(--color-sand);
+  color: var(--color-clay);
+}
+
+/* Mobile overlay accordion */
+.nav__overlay-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.nav__overlay-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav__overlay-arrow {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  color: var(--color-bark);
+}
+
+.nav__overlay-toggle[aria-expanded="true"] .nav__overlay-arrow {
+  transform: rotate(180deg);
+}
+
+.nav__overlay-sub {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.35s ease, margin-top 0.35s ease;
+  margin-top: 0;
+}
+
+.nav__overlay-sub.open {
+  max-height: 400px;
+  opacity: 1;
+  margin-top: 1.25rem;
+}
+
+.nav__overlay-sublink {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--color-clay);
+  letter-spacing: 0.05em;
+  transition: color var(--transition-base);
+}
+
+.nav__overlay-sublink:hover {
+  color: var(--color-bark);
 }
 
 @media (max-width: 768px) {

@@ -103,6 +103,12 @@
   letter-spacing: 0.05em;
 }
 
+@media (min-width: 901px) {
+  .about__body p {
+    font-size: 1.2rem;
+  }
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .about__container {

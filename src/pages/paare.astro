@@ -2,22 +2,27 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/subpage.css';
-
 const reasons = [
   {
     title: "Abenteuer & Freude",
-    text: "Ein Fotoshooting bietet nicht nur die Möglichkeit, wunderschöne Bilder zu erhalten, sondern ist auch eine spaßige Erfahrung. Es ist eine Gelegenheit, gemeinsam zu lachen und eine schöne Zeit miteinander zu verbringen.",
+    paragraphs: [
+      "Ein Fotoshooting bietet nicht nur die Möglichkeit, wunderschöne Bilder zu erhalten, sondern ist auch eine spaßige Erfahrung.",
+      "Es ist eine Gelegenheit, gemeinsam zu lachen und eine schöne Zeit miteinander zu verbringen.",
+    ],
     image: "/images/paare/abenteuer-freude.jpg",
   },
   {
     title: "Dekoration für Zuhause",
-    text: "Die entstandenen Fotos können euer Zuhause schmücken und als einzigartige Kunstwerke täglich an eure Liebe und die gemeinsame Zeit erinnern.",
+    paragraphs: [
+      "Die entstandenen Fotos können euer Zuhause schmücken und als einzigartige Kunstwerke täglich an eure Liebe und die gemeinsame Zeit erinnern.",
+    ],
     image: "/images/paare/dekoration-zuhause.jpg",
   },
   {
     title: "Erinnerungen schaffen",
-    text: "Mit zunehmendem Alter und in verschiedenen Lebensphasen entstehen einzigartige und kostbare Erinnerungen. Ein Fotoshooting ermöglicht es, diese Momente festzuhalten und sie für immer als Erinnerung zu bewahren.",
+    paragraphs: [
+      "Mit zunehmendem Alter und in verschiedenen Lebensphasen entstehen einzigartige und kostbare Erinnerungen. Ein Fotoshooting ermöglicht es, diese Momente festzuhalten und sie für immer als Erinnerung zu bewahren.",
+    ],
     image: "/images/paare/erinnerungen-schaffen.jpg",
   },
 ];
@@ -99,20 +104,17 @@ const faqs = [
         <div class="pa-reasons__header">
           <h2 class="pa-reasons__heading">3 Gründe für ein <em>Paarshooting.</em></h2>
         </div>
-        <div class="pa-reasons__grid">
-          {reasons.map((r, i) => (
-            <div class="pa-reasons__card">
-              <div class="pa-reasons__head">
-                <span class="pa-reasons__num">0{i + 1}</span>
-                <h3 class="pa-reasons__title">{r.title}</h3>
+        <div class="pa-reasons__list">
+          {reasons.map((r) => (
+            <article class="pa-reasons__row">
+              <h3 class="pa-reasons__title">{r.title}</h3>
+              <div class="pa-reasons__image">
+                <img src={r.image} alt={r.title} loading="lazy" />
               </div>
-              <div class="pa-reasons__split">
-                <div class="pa-reasons__image">
-                  <img src={r.image} alt={r.title} loading="lazy" />
-                </div>
-                <p class="pa-reasons__text">{r.text}</p>
+              <div class="pa-reasons__body">
+                {r.paragraphs.map((p) => <p class="pa-reasons__text">{p}</p>)}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
@@ -378,44 +380,30 @@ const faqs = [
   color: var(--color-clay);
 }
 
-.pa-reasons__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
-}
-
-.pa-reasons__card {
-  background: var(--color-cream);
+.pa-reasons__list {
   display: flex;
   flex-direction: column;
-  padding: var(--space-8);
-  border-top: 2px solid var(--color-sand);
-  transition: border-top-color 0.3s ease, transform 0.3s ease;
+  gap: var(--space-12);
 }
 
-.pa-reasons__card:hover {
-  border-top-color: var(--color-clay);
-  transform: translateY(-3px);
-}
-
-.pa-reasons__head {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-6);
-}
-
-.pa-reasons__split {
+.pa-reasons__row {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: var(--space-8);
-  align-items: center;
+  grid-template-columns: 6fr 8fr;
+  grid-template-areas:
+    "image title"
+    "image body";
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(2rem, 5vw, 5rem);
+  row-gap: var(--space-4);
+  align-items: start;
 }
 
 .pa-reasons__image {
+  grid-area: image;
+  align-self: center;
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
 }
 
@@ -427,41 +415,50 @@ const faqs = [
   display: block;
 }
 
-@media (max-width: 640px) {
-  .pa-reasons__split {
-    grid-template-columns: 1fr;
-    gap: var(--space-5);
-  }
-  .pa-reasons__image {
-    max-width: 220px;
-  }
-}
-
-.pa-reasons__num {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: var(--color-clay);
-}
-
 .pa-reasons__title {
+  grid-area: title;
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
   font-weight: 500;
   color: var(--color-bark);
   margin: 0;
   line-height: 1.25;
 }
 
+.pa-reasons__body {
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
 .pa-reasons__text {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--color-bark);
   line-height: 1.75;
   margin: 0;
   max-width: 60ch;
+}
+
+@media (max-width: 720px) {
+  .pa-reasons__row {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "body"
+      "image";
+    grid-template-rows: auto;
+    row-gap: var(--space-4);
+  }
+  .pa-reasons__title,
+  .pa-reasons__body {
+    text-align: center;
+  }
+  .pa-reasons__title {
+    font-size: 1.7rem;
+  }
 }
 
 @media (max-width: 900px) {
@@ -704,7 +701,7 @@ details[open] .pa-faq__chevron {
 /* ─── CTA ──────────────────────────────────────────────────── */
 .pa-cta {
   background: var(--color-cream);
-  padding: clamp(5rem, 10vw, 10rem) var(--container-gutter);
+  padding: clamp(3rem, 6vw, 5rem) var(--container-gutter);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -720,19 +717,19 @@ details[open] .pa-faq__chevron {
 .pa-cta__eyebrow {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: var(--color-bark);
+  color: var(--color-ink);
   margin-bottom: var(--space-6);
 }
 
 .pa-cta__image {
   display: block;
-  width: clamp(200px, 30vw, 280px);
+  width: clamp(100px, 15vw, 160px);
   aspect-ratio: 1 / 1;
   margin-inline: auto;
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-6);
   overflow: hidden;
 }
 
@@ -751,7 +748,7 @@ details[open] .pa-faq__chevron {
   color: var(--color-bark);
   line-height: 1.15;
   letter-spacing: -0.01em;
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-8);
 }
 
 .pa-cta__heading em {
@@ -803,6 +800,50 @@ details[open] .pa-faq__chevron {
 
   .pa-faq__heading {
     position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .pa-portfolio__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-8);
+    padding: clamp(3rem, 8vw, 5rem) var(--container-gutter);
+    min-height: unset;
+  }
+
+  .pa-portfolio__text {
+    display: contents;
+  }
+
+  .pa-portfolio__label,
+  .pa-portfolio__body {
+    display: none;
+  }
+
+  .pa-portfolio__heading {
+    order: 1;
+    text-align: center;
+    white-space: normal;
+    margin-bottom: 0;
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .pa-portfolio__visual {
+    order: 2;
+    min-height: unset;
+    height: auto;
+  }
+
+  .pa-portfolio__img-wrap {
+    min-height: unset;
+    aspect-ratio: 4 / 3;
+  }
+
+  .pa-portfolio__btn {
+    order: 3;
+    justify-content: center;
   }
 }
 
