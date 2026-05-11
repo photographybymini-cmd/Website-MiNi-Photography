@@ -1,19 +1,221 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Nav from '../components/Nav.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Angebote from '../components/Angebote.astro';
-import Kontakt from '../components/Kontakt.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout       from '../layouts/BaseLayout.astro';
+import Nav              from '../components/Nav.astro';
+import LandingHero      from '../components/LandingHero.astro';
+import LandingStatement from '../components/LandingStatement.astro';
+import LandingServices  from '../components/LandingServices.astro';
+import LandingAbout     from '../components/LandingAbout.astro';
+import LandingVisual    from '../components/LandingVisual.astro';
+import LandingFAQ       from '../components/LandingFAQ.astro';
+import LandingContact   from '../components/LandingContact.astro';
+import LandingFooter    from '../components/LandingFooter.astro';
 ---
-<BaseLayout>
+
+<BaseLayout
+  title="MiNi Photography | Hochzeits- & Paarshooting — Authentisch & Emotional"
+  description="Miette & Nicolai fotografieren eure Hochzeit, euer Paarshooting oder eure Familie — ungestellt, emotional und zeitlos. Rhein-Main & Destination Weddings."
+>
   <Nav />
   <main id="main">
-    <Hero />
-    <About />
-    <Angebote />
-    <Kontakt />
+    <LandingHero />
+    <LandingStatement />
+    <LandingServices />
+    <LandingAbout />
+    <LandingVisual />
+    <LandingFAQ />
+    <LandingContact />
   </main>
-  <Footer />
+  <LandingFooter />
 </BaseLayout>
+
+<script>
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// ─────────────────────────────────────────────────────────────
+// HELPERS
+// ─────────────────────────────────────────────────────────────
+const q  = (s: string) => document.querySelector<HTMLElement>(s);
+const qa = <T extends Element>(s: string) => gsap.utils.toArray<T>(s);
+
+// Elements that get custom GSAP animations (excluded from generic loop)
+const customEls = new Set<Element>([
+  ...qa('.services__card'),
+  ...qa('.faq__item'),
+  ...qa('.contact__header'),
+  ...qa('.contact__form'),
+  ...qa('.about__tag'),
+]);
+
+// ─────────────────────────────────────────────────────────────
+// 1. GENERIC REVEAL — smoother than CSS transition
+//    Overrides IntersectionObserver via inline style priority
+// ─────────────────────────────────────────────────────────────
+const genericReveals = qa<Element>('.reveal').filter(el => !customEls.has(el));
+
+gsap.set(genericReveals, { opacity: 0, y: 38 });
+
+genericReveals.forEach((el) => {
+  const delay =
+    el.classList.contains('reveal--delay-3') ? 0.34 :
+    el.classList.contains('reveal--delay-2') ? 0.22 :
+    el.classList.contains('reveal--delay-1') ? 0.11 : 0;
+
+  gsap.to(el, {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay,
+    ease: 'power3.out',
+    clearProps: 'transform,opacity',
+    scrollTrigger: { trigger: el, start: 'top 86%', once: true },
+  });
+});
+
+// ─────────────────────────────────────────────────────────────
+// 2. HERO — parallax depth on scroll
+// ─────────────────────────────────────────────────────────────
+gsap.to('.hero__slides', {
+  yPercent: 22,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: 1.4,
+  },
+});
+
+// ─────────────────────────────────────────────────────────────
+// 3. STATEMENT — scale + fade for extra weight
+// ─────────────────────────────────────────────────────────────
+gsap.fromTo('.statement__text',
+  { opacity: 0, y: 50, scale: 0.97 },
+  {
+    opacity: 1, y: 0, scale: 1,
+    duration: 1.3,
+    ease: 'power3.out',
+    clearProps: 'transform,opacity',
+    scrollTrigger: { trigger: '.statement', start: 'top 72%', once: true },
+  },
+);
+
+gsap.fromTo('.statement__ornament',
+  { opacity: 0, scaleX: 0 },
+  {
+    opacity: 1, scaleX: 1,
+    duration: 0.9,
+    ease: 'power2.out',
+    clearProps: 'transform,opacity',
+    scrollTrigger: { trigger: '.statement', start: 'top 75%', once: true },
+  },
+);
+
+// ─────────────────────────────────────────────────────────────
+// 4. SERVICES — staggered card entrance with slight scale
+// ─────────────────────────────────────────────────────────────
+gsap.set('.services__card', { opacity: 0, y: 50, scale: 0.965 });
+
+gsap.to('.services__card', {
+  opacity: 1,
+  y: 0,
+  scale: 1,
+  duration: 0.9,
+  stagger: 0.1,
+  ease: 'power3.out',
+  clearProps: 'transform,opacity',
+  scrollTrigger: { trigger: '.services__grid', start: 'top 82%', once: true },
+});
+
+// ─────────────────────────────────────────────────────────────
+// 5. ABOUT — parallax images + badge pop
+// ─────────────────────────────────────────────────────────────
+gsap.to('.about__main-img', {
+  yPercent: -12,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: 1.5,
+  },
+});
+
+gsap.to('.about__accent img', {
+  yPercent: -7,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: 2.2,
+  },
+});
+
+// Badge: pop in with spring
+gsap.set('.about__tag', { opacity: 0, scale: 0.7, y: 20 });
+gsap.to('.about__tag', {
+  opacity: 1, scale: 1, y: 0,
+  duration: 0.75,
+  ease: 'back.out(1.7)',
+  clearProps: 'transform,opacity',
+  scrollTrigger: { trigger: '.about__visual', start: 'top 68%', once: true },
+});
+
+// ─────────────────────────────────────────────────────────────
+// 6. VISUAL — parallax + quote reveal
+// ─────────────────────────────────────────────────────────────
+gsap.to('.visual__img', {
+  yPercent: 18,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.visual', start: 'top bottom', end: 'bottom top', scrub: 1.1,
+  },
+});
+
+// ─────────────────────────────────────────────────────────────
+// 7. FAQ — horizontal stagger from left
+// ─────────────────────────────────────────────────────────────
+gsap.set('.faq__item', { opacity: 0, x: -24 });
+
+qa<Element>('.faq__item').forEach((item, i) => {
+  gsap.to(item, {
+    opacity: 1, x: 0,
+    duration: 0.72,
+    delay: i * 0.07,
+    ease: 'power2.out',
+    clearProps: 'transform,opacity',
+    scrollTrigger: { trigger: item, start: 'top 88%', once: true },
+  });
+});
+
+// ─────────────────────────────────────────────────────────────
+// 8. CONTACT — split entrance (header ← | form →)
+// ─────────────────────────────────────────────────────────────
+gsap.set('.contact__header', { opacity: 0, x: -36 });
+gsap.set('.contact__form',   { opacity: 0, x:  36 });
+
+gsap.to('.contact__header', {
+  opacity: 1, x: 0,
+  duration: 1,
+  ease: 'power3.out',
+  clearProps: 'transform,opacity',
+  scrollTrigger: { trigger: '.contact', start: 'top 78%', once: true },
+});
+
+gsap.to('.contact__form', {
+  opacity: 1, x: 0,
+  duration: 1,
+  delay: 0.15,
+  ease: 'power3.out',
+  clearProps: 'transform,opacity',
+  scrollTrigger: { trigger: '.contact', start: 'top 78%', once: true },
+});
+
+// ─────────────────────────────────────────────────────────────
+// 9. RESPECT prefers-reduced-motion
+// ─────────────────────────────────────────────────────────────
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  gsap.globalTimeline.timeScale(0); // freeze all GSAP
+  qa<Element>('.reveal, .services__card, .faq__item, .contact__header, .contact__form, .about__tag, .statement__text, .statement__ornament')
+    .forEach(el => {
+      gsap.set(el, { clearProps: 'all' });
+    });
+}
+</script>

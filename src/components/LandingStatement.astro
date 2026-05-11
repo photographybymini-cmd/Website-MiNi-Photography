@@ -1,0 +1,68 @@
+---
+---
+<section class="statement" aria-label="Unsere Philosophie">
+  <div class="container">
+    <div class="statement__inner reveal">
+      <div class="statement__ornament" aria-hidden="true">
+        <span class="statement__line"></span>
+        <svg width="7" height="7" viewBox="0 0 7 7" fill="none" aria-hidden="true">
+          <circle cx="3.5" cy="3.5" r="3.5" fill="var(--color-clay)" opacity="0.45"/>
+        </svg>
+        <span class="statement__line"></span>
+      </div>
+
+      <p class="statement__text">
+        Ungestellte Erinnerungen für<br class="statement__br" />
+        <em>Menschen, die fühlen statt posieren.</em>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+.statement {
+  padding: clamp(6rem, 14vh, 11rem) 0;
+  background: var(--color-cream);
+}
+
+.statement__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(2rem, 4vh, 3rem);
+  max-width: 1050px;
+  margin-inline: auto;
+}
+
+.statement__ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.statement__line {
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: var(--color-sand);
+}
+
+.statement__text {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.8vw, 4.4rem);
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+.statement__text em {
+  font-style: italic;
+  color: var(--color-clay);
+}
+
+@media (max-width: 540px) {
+  .statement__br { display: none; }
+}
+</style>
