@@ -54,6 +54,48 @@ const extras = [
   { label: "Kennenlernshooting", detail: "Paket Classic", price: "100 €" },
   { label: "After-Wedding Shooting", detail: "Paket Classic", price: "100 €" },
 ];
+
+const shootingPackages = [
+  {
+    name: "Basic",
+    price: "100",
+    features: [
+      { text: "bis zu 20 Minuten Shooting mit 2 Fotografen" },
+      { text: "10 bearbeitete Fotos (jedes weitere 4 €)" },
+      { text: "Onlinegalerie zum Download der Fotos" },
+      { text: "Anfahrt 35 ct./km" },
+      { text: "Bearbeitungszeit bis zu 7 Tage" },
+    ],
+  },
+  {
+    name: "Classic",
+    price: "150",
+    badge: "Beliebteste Wahl",
+    features: [
+      { text: "bis zu 1 Stunde Shooting mit 2 Fotografen" },
+      { text: "Mind. 30 bearbeitete Fotos" },
+      { text: "Onlinegalerie zum Download der Fotos" },
+      { text: "Anfahrt 30 km inkl., dann 35 ct/km" },
+      { text: "Bearbeitungszeit bis zu 7 Tage" },
+    ],
+  },
+  {
+    name: "Premium",
+    price: "200",
+    features: [
+      { text: "bis zu 2 Stunden Shooting mit 2 Fotografen" },
+      { text: "Mind. 50 bearbeitete Fotos" },
+      { text: "Onlinegalerie zum Download der Fotos" },
+      { text: "Anfahrt 50 km inkl., dann 35 ct/km" },
+      { text: "Bearbeitungszeit bis zu 10 Tage" },
+    ],
+  },
+];
+
+const shootingExtras = [
+  { label: "Highlightvideo", detail: "ca. 2–5 Minuten", price: "auf Anfrage" },
+  { label: "Drohnenaufnahmen", detail: "", price: "20 €" },
+];
 ---
 
 <BaseLayout
@@ -65,6 +107,16 @@ const extras = [
 
     <!-- ─── Hero ─────────────────────────────────────────── -->
     <section class="pr-hero">
+      <img
+        src="/images/hero/Titelbild-Preise-Pakete.jpg"
+        alt="MiNi Photography – Preise & Pakete"
+        class="pr-hero__img"
+        loading="eager"
+        fetchpriority="high"
+        width="1920"
+        height="800"
+      />
+      <div class="pr-hero__overlay"></div>
       <div class="pr-hero__inner">
         <a href="/" class="pr-hero__back">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -129,15 +181,76 @@ const extras = [
           <div class="pr-extras__grid">
             {extras.map((e) => (
               <div class="pr-extra">
-                <div class="pr-extra__left">
-                  <span class="pr-extra__label">{e.label}</span>
-                  {e.detail && <span class="pr-extra__detail">{e.detail}</span>}
-                </div>
+                <span class="pr-extra__label">
+                  {e.label}{e.detail && <span class="pr-extra__detail"> ({e.detail})</span>}
+                </span>
                 <span class="pr-extra__price">{e.price}</span>
               </div>
             ))}
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- ─── Paar- & Familienshootings ──────────────────────── -->
+    <section class="pr-shooting">
+      <div class="pr-shooting__inner">
+
+        <header class="pr-packages__header">
+          <h2 class="pr-packages__title">Paar- &amp; Familienpakete</h2>
+          <p class="pr-packages__sub">Für alle Momente abseits der Hochzeit.</p>
+        </header>
+
+        <div class="pr-grid pr-grid--equal">
+          {shootingPackages.map((pkg) => (
+            <article class="pr-card">
+              {pkg.badge && (
+                <span class="pr-card__badge">{pkg.badge}</span>
+              )}
+              <div class="pr-card__header">
+                <h3 class="pr-card__name">{pkg.name}</h3>
+                <div class="pr-card__price-wrap">
+                  <span class="pr-card__price">{pkg.price}</span>
+                  <span class="pr-card__currency">€</span>
+                </div>
+              </div>
+              <div class="pr-card__divider"></div>
+              <ul class="pr-card__list">
+                {pkg.features.map((f) => (
+                  <li class="pr-card__item">
+                    <svg class="pr-card__check" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="3,8 6,11 13,4"/>
+                    </svg>
+                    <span>{f.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <p class="pr-footnote">* Individuelle Pakete sind natürlich auch möglich.</p>
+
+        <!-- Zusatzleistungen -->
+        <div class="pr-shooting__extras">
+          <article class="pr-extras__card">
+            <header class="pr-extras__header">
+              <span class="section-label">Zusatzleistungen</span>
+              <h2 class="pr-extras__title">Optional <em>dazubuchbar.</em></h2>
+            </header>
+            <div class="pr-extras__grid">
+              {shootingExtras.map((e) => (
+                <div class="pr-extra">
+                  <span class="pr-extra__label">
+                    {e.label}{e.detail && <span class="pr-extra__detail"> ({e.detail})</span>}
+                  </span>
+                  <span class="pr-extra__price">{e.price}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+        </div>
+
       </div>
     </section>
 
@@ -165,11 +278,34 @@ const extras = [
 <style>
 /* ─── Hero ────────────────────────────────────────────────── */
 .pr-hero {
+  position: relative;
   background: var(--color-bark);
-  padding: clamp(7rem, 12vw, 10rem) var(--container-gutter) clamp(3rem, 5vw, 4rem);
+  padding: clamp(18rem, 35vw, 30rem) var(--container-gutter) clamp(9rem, 15vw, 15rem);
+  overflow: hidden;
+}
+
+.pr-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.pr-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(92, 72, 67, 0.75) 0%,
+    rgba(30, 24, 23, 0.45) 100%
+  );
 }
 
 .pr-hero__inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--container-max);
   margin-inline: auto;
   display: flex;
@@ -220,6 +356,7 @@ const extras = [
 
 .pr-packages__header {
   margin-bottom: clamp(3rem, 6vw, 5rem);
+  text-align: center;
 }
 
 .pr-packages__title {
@@ -233,11 +370,11 @@ const extras = [
 
 .pr-packages__sub {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 300;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-clay);
+  color: var(--color-bark);
   margin-top: var(--space-4);
 }
 
@@ -247,6 +384,10 @@ const extras = [
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-6);
   align-items: start;
+}
+
+.pr-grid--equal {
+  align-items: stretch;
 }
 
 /* ─── Card ────────────────────────────────────────────────── */
@@ -320,9 +461,9 @@ const extras = [
 }
 
 .pr-card__price {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(2rem, 3vw, 2.8rem);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-clay);
   line-height: 1;
 }
@@ -332,7 +473,7 @@ const extras = [
 }
 
 .pr-card__currency {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 1.2rem;
   font-weight: 400;
   color: var(--color-clay);
@@ -368,7 +509,7 @@ const extras = [
   align-items: flex-start;
   gap: var(--space-3);
   font-family: var(--font-body);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--color-bark);
   line-height: 1.5;
@@ -412,6 +553,7 @@ const extras = [
   color: var(--color-clay);
   margin-top: clamp(2rem, 4vw, 3rem);
   letter-spacing: 0.04em;
+  text-align: center;
 }
 
 /* ─── Extras ──────────────────────────────────────────────── */
@@ -588,6 +730,26 @@ const extras = [
 
 .pr-cta__btn svg { transition: transform 0.25s ease; }
 .pr-cta__btn:hover svg { transform: translateX(5px); }
+
+/* ─── Paar- & Familienshootings ───────────────────────────── */
+.pr-shooting {
+  background: var(--color-parchment);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter) clamp(3rem, 6vw, 6rem);
+  border-top: 1px solid rgba(92,72,67,0.1);
+}
+
+.pr-shooting__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.pr-shooting__extras {
+  margin-top: clamp(3rem, 5vw, 4rem);
+}
+
+.pr-shooting__extras .pr-extras__card {
+  background: var(--color-cream);
+}
 
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 1024px) {

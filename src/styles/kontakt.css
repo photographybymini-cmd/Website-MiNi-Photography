@@ -232,6 +232,11 @@
   color: var(--color-clay);
 }
 
+.kontakt__info-value--tel {
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
 .kontakt__info-divider {
   width: 40px;
   height: 1px;
@@ -254,7 +259,7 @@
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-sand);
+  color: var(--color-ink);
   transition: color var(--transition-base);
   cursor: pointer;
 }
