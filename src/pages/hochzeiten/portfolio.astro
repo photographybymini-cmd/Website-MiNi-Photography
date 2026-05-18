@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/portfolio.css';
+
+const photos = [
+  { src: '/images/gallery/01.jpg', alt: 'Hochzeit – Moment der Freude',        tall: true  },
+  { src: '/images/gallery/02.jpg', alt: 'Hochzeit – Blick des Paares'                      },
+  { src: '/images/gallery/03.jpg', alt: 'Hochzeit – Details & Atmosphäre'                  },
+  { src: '/images/gallery/04.jpg', alt: 'Hochzeit – Emotionaler Augenblick',    wide: true  },
+  { src: '/images/gallery/05.jpg', alt: 'Hochzeit – Brautpaar'                             },
+  { src: '/images/gallery/06.jpg', alt: 'Hochzeit – Feier & Tanz',             tall: true  },
+  { src: '/images/gallery/07.jpg', alt: 'Hochzeit – Lachen & Leichtigkeit'                 },
+  { src: '/images/gallery/08.jpg', alt: 'Hochzeit – Stimmungsvolles Licht'                 },
+  { src: '/images/gallery/09.jpg', alt: 'Hochzeit – Liebe im Detail',          wide: true  },
+  { src: '/images/gallery/10.jpg', alt: 'Hochzeit – Unvergesslicher Tag'                   },
+  { src: '/images/gallery/11.jpg', alt: 'Hochzeit – Natürliche Momente'                    },
+  { src: '/images/gallery/12.jpg', alt: 'Hochzeit – Erinnerungen für immer'                },
+];
+---
+
+<BaseLayout
+  title="Hochzeiten Portfolio – MiNi Photography"
+  description="Echte Momente, echte Gefühle – unser Portfolio der schönsten Hochzeiten. Cineastische Hochzeitsfotografie von Miette & Nicolai."
+>
+  <Nav />
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="pf-hero" aria-label="Portfolio Hochzeiten">
+      <div class="pf-hero__inner">
+        <a href="/hochzeiten" class="pf-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="13" y1="8" x2="3" y2="8"/><polyline points="7,4 3,8 7,12"/>
+          </svg>
+          Hochzeitsfotografie
+        </a>
+        <span class="pf-hero__label">Portfolio</span>
+        <h1 class="pf-hero__title">Hoch<em>zeiten.</em></h1>
+        <p class="pf-hero__count">{photos.length} Aufnahmen</p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <div class="pf-intro">
+      <div class="pf-intro__inner">
+        <div class="pf-intro__text">
+          <h2 class="pf-intro__heading">Jede Hochzeit ist einzigartig –<br/>wie die Menschen dahinter.</h2>
+          <p class="pf-intro__sub">Wir halten eure Momente so fest, wie sie wirklich waren: ungestellt, emotional und zeitlos.</p>
+        </div>
+        <a href="/hochzeiten" class="pf-intro__link">
+          Mehr über Hochzeitsfotografie
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <section class="pf-grid-section">
+      <div class="pf-grid-section__inner">
+        <div class="pf-grid">
+          {photos.map((p) => (
+            <div class={`pf-item${p.tall ? ' pf-item--tall' : ''}${p.wide ? ' pf-item--wide' : ''}`}>
+              <img src={p.src} alt={p.alt} loading="lazy" />
+              <div class="pf-item__overlay"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pf-cta">
+      <div class="pf-cta__inner">
+        <span class="pf-cta__label">Euer Tag, unsere Linse</span>
+        <h2 class="pf-cta__heading">Bereit für <em>euren großen Tag?</em></h2>
+        <div class="pf-cta__btns">
+          <a href="/#kontakt" class="pf-cta__btn pf-cta__btn--primary">
+            Jetzt anfragen
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+            </svg>
+          </a>
+          <a href="/preise" class="pf-cta__btn pf-cta__btn--secondary">Preise & Pakete</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>

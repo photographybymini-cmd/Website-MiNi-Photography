@@ -1,0 +1,261 @@
+---
+const services = [
+  {
+    id:          'hochzeiten',
+    label:       'Hochzeiten',
+    subtitle:    'Euer schönster Tag',
+    description: 'Wir dokumentieren eure Hochzeit so, wie sie wirklich war — voller Gefühle, Tränen und ehrlichem Lachen.',
+    image:       '/images/angebote/Hochzeiten-Angebot.jpg',
+    href:        '/hochzeiten',
+  },
+  {
+    id:          'paare',
+    label:       'Paarshootings',
+    subtitle:    'Nur ihr zwei',
+    description: 'Kein Posieren, kein Skript — einfach ihr, so wie ihr wirklich seid.',
+    image:       '/images/angebote/Paare-Angebot.jpg',
+    href:        '/paare',
+  },
+  {
+    id:          'familien',
+    label:       'Familien',
+    subtitle:    'Chaos mit Herz',
+    description: 'Echte Familienmomente: lebendig, bunt und für immer festgehalten.',
+    image:       '/images/angebote/Familien-Angebot.jpg',
+    href:        '/familie',
+  },
+  {
+    id:          'videos',
+    label:       'Highlightvideos',
+    subtitle:    'Euer Tag in Bewegung',
+    description: 'Cineastische Kurzfilme, die den Charakter eures Tages auf den Punkt bringen.',
+    image:       '/images/gallery/05.jpg',
+    href:        '#kontakt',
+  },
+];
+---
+
+<section class="services" id="leistungen" aria-label="Unsere Leistungen">
+
+  <div class="container">
+    <div class="services__header reveal">
+      <span class="section-label">Was wir machen</span>
+      <h2 class="services__title">
+        Für jeden Moment<br />
+        <em>das richtige Bild.</em>
+      </h2>
+    </div>
+  </div>
+
+  <div class="services__stage">
+    <div class="services__grid">
+      {services.map((s, i) => (
+        <a
+          href={s.href}
+          class={`services__card reveal${i > 0 ? ` reveal--delay-${Math.min(i, 3)}` : ''}`}
+          data-id={s.id}
+        >
+          <div class="services__img-wrap">
+            <img
+              src={s.image}
+              alt={s.label}
+              loading="lazy"
+              width="800"
+              height="1000"
+            />
+          </div>
+          <div class="services__veil"></div>
+          <div class="services__body">
+            <span class="services__sub">{s.subtitle}</span>
+            <h3 class="services__name">{s.label}</h3>
+            <div class="services__reveal">
+              <p class="services__desc">{s.description}</p>
+              <span class="services__arrow" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+</section>
+
+<style>
+.services {
+  padding: clamp(4rem, 9vh, 7rem) 0;
+  background: var(--color-cream);
+}
+
+.services__header {
+  margin-bottom: clamp(2.5rem, 5vh, 4rem);
+}
+
+.services__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-top: 0.5rem;
+}
+.services__title em {
+  font-style: italic;
+  color: var(--color-clay);
+}
+
+.services__stage {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+}
+
+/* ── Asymmetric editorial grid ──────────────────
+   Desktop:
+     [ Card 1 — tall left ]  [ 2 ][ 3 ]
+     [ Card 1 — tall left ]  [    4    ]
+   ──────────────────────────────────────────────*/
+.services__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows:
+    clamp(240px, 27vw, 360px)
+    clamp(170px, 18vw, 240px);
+  gap: 0.9rem;
+}
+
+.services__card:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+.services__card:nth-child(2) { grid-column: 2; grid-row: 1;     }
+.services__card:nth-child(3) { grid-column: 3; grid-row: 1;     }
+.services__card:nth-child(4) { grid-column: 2 / 4; grid-row: 2; }
+
+/* ── Card ─────────────────────────────────────── */
+.services__card {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.services__img-wrap {
+  position: absolute;
+  inset: 0;
+}
+.services__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.services__card:hover .services__img-wrap img {
+  transform: scale(1.07);
+}
+
+.services__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(12, 9, 7, 0.9)  0%,
+    rgba(12, 9, 7, 0.28) 52%,
+    rgba(12, 9, 7, 0.08) 100%
+  );
+  transition: background 0.5s ease;
+}
+.services__card:hover .services__veil {
+  background: linear-gradient(
+    to top,
+    rgba(12, 9, 7, 0.94) 0%,
+    rgba(12, 9, 7, 0.52) 55%,
+    rgba(12, 9, 7, 0.18) 100%
+  );
+}
+
+.services__body {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1rem, 2.2vw, 1.5rem);
+}
+
+.services__sub {
+  font-family: var(--font-body);
+  font-size: 0.57rem;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 252, 250, 0.48);
+  display: block;
+  margin-bottom: 0.4rem;
+  transition: color 0.3s ease;
+}
+.services__card:hover .services__sub { color: var(--color-clay); }
+
+.services__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.1vw, 2rem);
+  font-weight: 300;
+  color: var(--color-cream);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.services__reveal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+}
+.services__card:hover .services__reveal {
+  max-height: 120px;
+  opacity: 1;
+}
+
+.services__desc {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 300;
+  color: rgba(255, 252, 250, 0.62);
+  line-height: 1.65;
+}
+
+.services__arrow { color: var(--color-clay); display: flex; }
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 1023px) {
+  .services__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .services__card:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 3 / 4;
+  }
+  .services__card:nth-child(1) { grid-column: 1 / 3; aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 600px) {
+  .services__grid { grid-template-columns: 1fr; }
+  .services__card:nth-child(n) {
+    grid-column: 1;
+    aspect-ratio: 4 / 3;
+  }
+  .services__card:nth-child(1) { aspect-ratio: 4 / 3; }
+}
+</style>

@@ -1,0 +1,426 @@
+---
+const slides = [
+  {
+    image: '/images/hero/Titelbild-Hochzeitsfotografie.jpg',
+    label: 'Hochzeitsfotografie',
+    alt: 'Hochzeitsfotografie von MiNi Photography',
+  },
+  {
+    image: '/images/hero/Titelbild-Paarfotografie.jpg',
+    label: 'Paarfotografie',
+    alt: 'Paarfotografie von MiNi Photography',
+  },
+  {
+    image: '/images/hero/Titelbild-Familienfotografie.jpg',
+    label: 'Familienfotografie',
+    alt: 'Familienfotografie von MiNi Photography',
+  },
+  {
+    image: '/images/gallery/01.jpg',
+    label: 'Highlightvideos',
+    alt: 'Cinematic Highlightvideo von MiNi Photography',
+  },
+];
+---
+
+<section class="hero" id="start" aria-label="Willkommen bei MiNi Photography">
+
+  <div class="hero__slides" aria-hidden="true">
+    {slides.map((slide, i) => (
+      <div class={`hero__slide${i === 0 ? ' hero__slide--active' : ''}`} data-slide={i}>
+        <img
+          src={slide.image}
+          alt={slide.alt}
+          class="hero__img"
+          loading={i === 0 ? 'eager' : 'lazy'}
+          fetchpriority={i === 0 ? 'high' : 'low'}
+          width="1920"
+          height="1280"
+        />
+      </div>
+    ))}
+  </div>
+
+  <div class="hero__overlay" aria-hidden="true"></div>
+  <div class="hero__grain"   aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <p class="hero__label" id="hero-slide-label" aria-live="polite">{slides[0].label}</p>
+
+    <h1 class="hero__headline">
+      <span class="hero__line hero__line--1">Für Momente,</span>
+      <span class="hero__line hero__line--2">die man</span>
+      <span class="hero__line hero__line--3">nicht vergisst.</span>
+    </h1>
+
+    <p class="hero__sub">
+      Miette &amp; Nicolai — Hochzeits- und Paarshooting<br class="hero__br" />
+      im Rhein-Main-Gebiet &amp; weltweit.
+    </p>
+
+    <div class="hero__ctas">
+      <a href="#kontakt" class="hero__cta hero__cta--primary">
+        Anfrage senden
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+      <a href="/hochzeiten" class="hero__cta hero__cta--outline">
+        Galerien ansehen
+      </a>
+    </div>
+  </div>
+
+  <nav class="hero__dots" aria-label="Slideshow Navigation">
+    {slides.map((slide, i) => (
+      <button
+        class={`hero__dot${i === 0 ? ' hero__dot--active' : ''}`}
+        aria-label={`Slide ${i + 1}: ${slide.label}`}
+        aria-pressed={i === 0 ? 'true' : 'false'}
+        data-dot={i}
+      ></button>
+    ))}
+  </nav>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="hero__scroll-text">Scrollen</span>
+    <div class="hero__scroll-track">
+      <div class="hero__scroll-bar"></div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  const slides   = document.querySelectorAll<HTMLElement>('.hero__slide');
+  const dots     = document.querySelectorAll<HTMLButtonElement>('.hero__dot');
+  const labelEl  = document.getElementById('hero-slide-label');
+  const labels   = Array.from(dots).map(d => d.getAttribute('aria-label')?.split(': ')[1] ?? '');
+  let   current  = 0;
+  let   timer: ReturnType<typeof setInterval>;
+  let   busy     = false;
+
+  function goTo(index: number) {
+    if (busy || index === current) return;
+    busy = true;
+
+    slides[current].classList.remove('hero__slide--active');
+    dots[current].classList.remove('hero__dot--active');
+    dots[current].setAttribute('aria-pressed', 'false');
+
+    current = index;
+    slides[current].classList.add('hero__slide--active');
+    dots[current].classList.add('hero__dot--active');
+    dots[current].setAttribute('aria-pressed', 'true');
+
+    if (labelEl) {
+      labelEl.style.opacity = '0';
+      setTimeout(() => {
+        if (labelEl) { labelEl.textContent = labels[current]; labelEl.style.opacity = '1'; }
+        busy = false;
+      }, 350);
+    } else {
+      busy = false;
+    }
+  }
+
+  function tick()  { goTo((current + 1) % slides.length); }
+  function start() { timer = setInterval(tick, 6000); }
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { clearInterval(timer); goTo(i); start(); }));
+  start();
+  window.addEventListener('beforeunload', () => clearInterval(timer));
+</script>
+
+<style>
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(7rem, 14vh, 10rem);
+  overflow: hidden;
+}
+
+/* ── Slides ───────────────────────────────────── */
+.hero__slides { position: absolute; inset: 0; }
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+.hero__slide--active { opacity: 1; }
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: heroZoom 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1.13); }
+}
+
+/* ── Overlays ─────────────────────────────────── */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top,
+      rgba(12, 9, 7, 0.90) 0%,
+      rgba(12, 9, 7, 0.42) 38%,
+      rgba(12, 9, 7, 0.18) 68%,
+      rgba(12, 9, 7, 0.32) 100%
+    );
+}
+
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.032;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Content ──────────────────────────────────── */
+.hero__content {
+  position: relative;
+  z-index: 3;
+  max-width: var(--container-max);
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.6rem, 1.2vh, 1rem);
+}
+
+.hero__label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: rgba(255, 252, 250, 0.48);
+  margin-bottom: 0.2rem;
+  transition: opacity 0.3s ease;
+  animation: heroUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 0.3s;
+}
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: clamp(3.6rem, 9.5vw, 9.8rem);
+  font-weight: 300;
+  line-height: 0.91;
+  letter-spacing: -0.025em;
+  color: var(--color-cream);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.3rem;
+}
+
+.hero__line--1 {
+  animation: heroUp 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 0.52s;
+}
+.hero__line--2 {
+  font-style: italic;
+  padding-left: clamp(2.5rem, 9vw, 9rem);
+  animation: heroUp 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 0.67s;
+}
+.hero__line--3 {
+  font-style: italic;
+  color: rgba(255, 252, 250, 0.76);
+  animation: heroUp 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 0.82s;
+}
+
+.hero__sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.05vw, 0.9rem);
+  font-weight: 300;
+  color: rgba(255, 252, 250, 0.5);
+  letter-spacing: 0.07em;
+  line-height: 1.9;
+  margin-top: 0.4rem;
+  animation: heroUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 1s;
+}
+
+.hero__ctas {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+  animation: heroUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: 1.15s;
+}
+
+.hero__cta {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hero__cta--primary {
+  background: var(--color-clay);
+  color: var(--color-cream);
+  padding: 0.85rem 1.8rem;
+}
+.hero__cta--primary:hover {
+  background: var(--color-bark);
+  transform: translateY(-2px);
+}
+
+.hero__cta--outline {
+  color: rgba(255, 252, 250, 0.7);
+  border-bottom: 1px solid rgba(255, 252, 250, 0.28);
+  padding-bottom: 0.18rem;
+}
+.hero__cta--outline:hover {
+  color: var(--color-cream);
+  border-bottom-color: rgba(255, 252, 250, 0.65);
+}
+
+/* ── Dots ─────────────────────────────────────── */
+.hero__dots {
+  position: absolute;
+  right: var(--container-gutter);
+  bottom: clamp(2.5rem, 5vh, 4rem);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.55rem;
+  animation: heroFadeIn 1s ease both;
+  animation-delay: 1.4s;
+}
+
+.hero__dot {
+  width: 2px;
+  height: 17px;
+  background: rgba(255, 252, 250, 0.22);
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  transition: height 0.3s ease, background 0.3s ease;
+}
+.hero__dot--active,
+.hero__dot:hover {
+  background: rgba(255, 252, 250, 0.88);
+  height: 30px;
+}
+
+/* ── Scroll indicator ─────────────────────────── */
+.hero__scroll {
+  position: absolute;
+  bottom: clamp(2.5rem, 5vh, 4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  animation: heroFadeIn 1s ease both;
+  animation-delay: 1.5s;
+}
+
+.hero__scroll-text {
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 252, 250, 0.38);
+}
+
+.hero__scroll-track {
+  width: 1px;
+  height: 46px;
+  background: rgba(255, 252, 250, 0.13);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__scroll-bar {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 252, 250, 0.52);
+  animation: scrollLine 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation-delay: 2.2s;
+}
+
+@keyframes scrollLine {
+  0%   { top: -100%; opacity: 1; }
+  100% { top:  100%; opacity: 0; }
+}
+
+/* ── Entrance animations ──────────────────────── */
+@keyframes heroUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 768px) {
+  .hero { padding-bottom: clamp(5rem, 10vh, 7rem); }
+
+  .hero__line--2 { padding-left: clamp(1.5rem, 5vw, 3.5rem); }
+
+  .hero__dots {
+    flex-direction: row;
+    left: 50%;
+    right: auto;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    gap: 0.45rem;
+  }
+  .hero__dot             { width: 18px; height: 2px; }
+  .hero__dot--active,
+  .hero__dot:hover       { width: 30px; height: 2px; }
+
+  .hero__scroll { display: none; }
+  .hero__br     { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__img,
+  .hero__scroll-bar { animation: none; }
+  .hero__line--1, .hero__line--2, .hero__line--3,
+  .hero__label, .hero__sub, .hero__ctas, .hero__dots, .hero__scroll {
+    animation: none; opacity: 1; transform: none;
+  }
+}
+</style>

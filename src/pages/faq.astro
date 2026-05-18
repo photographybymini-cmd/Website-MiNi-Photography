@@ -1,0 +1,473 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  {
+    q: "Wann erhalten wir die Bilder?",
+    paragraphs: [
+      "Die Lieferzeit für eure Fotos variiert je nach Art des Shootings. Bei Paaren und Familien dauert es in der Regel maximal 10 Tage. Bei Hochzeiten 14 bis 28 Tage.",
+      "Wir verstehen, wie aufregend die Wartezeit auf die Bilder sein kann, und legen daher großen Wert auf eine zügige Bearbeitung.",
+      "Die genaue Lieferzeit für eure Fotos wird im Vertrag festgelegt, damit ihr genau wisst, wann ihr mit euren Bildern rechnen könnt.",
+    ],
+  },
+  {
+    q: "Wie werden uns die Bilder zur Verfügung gestellt?",
+    paragraphs: [
+      "Die Bilder werden euch in einer Online-Galerie zur Verfügung gestellt, die ihr ganz nach Belieben mit Freunden und Familie teilen könnt. Auf Wunsch richten wir die Galerie auch passwortgeschützt ein.",
+      "Ihr habt die Möglichkeit, die Bilder in voller Auflösung und ohne Wasserzeichen herunterzuladen. Die Galerie bleibt für mindestens 3 Monate online, oftmals aber auch länger.",
+    ],
+  },
+  {
+    q: "Wie und wann bezahlen wir?",
+    paragraphs: [
+      "Bei uns habt ihr die Wahl: Ihr könnt bequem per PayPal, Überweisung oder bei kleineren Beträgen auch in bar zahlen. Unsere Zahlungsbedingungen werden vertraglich festgelegt, um Transparenz und Sicherheit für beide Seiten zu gewährleisten.",
+      "Bei Hochzeiten ist vor Vertragsabschluss eine Anzahlung in Höhe von 20 % des Gesamtbetrags erforderlich. Diese Anzahlung wird selbstverständlich mit dem Gesamtbetrag verrechnet, der vor der Übergabe der Bilder vollständig beglichen werden muss.",
+    ],
+  },
+  {
+    q: "Was passiert, wenn ihr ausfallt?",
+    paragraphs: [
+      "Dass wir beide gleichzeitig krank sind ist sehr unwahrscheinlich. Im Falle einer Hochzeit bemühen wir uns natürlich um einen Ersatzfotografen aus unserem Netzwerk!",
+    ],
+  },
+  {
+    q: "Was kostet die fotografische Begleitung?",
+    paragraphs: [
+      "Unsere Preise beginnen bei 100 € und reichen bis zu 1.900 €. So groß wie die Spanne sind auch unsere Möglichkeiten, euch ein individuelles Paket zusammenzustellen!",
+    ],
+    link: { href: "/preise", label: "Mehr dazu auf unserer Preisseite" },
+  },
+  {
+    q: "Welches Equipment nutzt ihr?",
+    paragraphs: [
+      "Wir arbeiten mit professionellen Kameras und hochwertigen Objektiven führender Hersteller, um jedes Detail in bester Qualität festzuhalten. Ergänzt durch präzise Nachbearbeitung sorgen wir dafür, dass jedes Bild perfekt zur Geltung kommt.",
+    ],
+  },
+  {
+    q: "Wie sichert ihr die Bilder?",
+    paragraphs: [
+      "Die Datensicherung hat bei uns einen der höchsten Stellenwerte! Wir nutzen Kameras mit 2 SD-Karten und sichern eure Bilder nach dem Shooting sowohl auf einem zusätzlichen Datenträger als auch in einer Cloud. So können keine Momente verloren gehen.",
+    ],
+  },
+  {
+    q: "Wir standen noch nie vor einer Kamera. Ist das ein Problem?",
+    paragraphs: [
+      "Das ist überhaupt kein Problem! Die meisten unserer Kunden hatten vorher keine Erfahrung mit Fotoshootings. Wir unterstützen euch gerne mit Anweisungen und Tipps, sodass tolle authentische Aufnahmen entstehen können.",
+    ],
+  },
+  {
+    q: "Sollten wir euch beim Essen einplanen?",
+    paragraphs: [
+      "Wir freuen uns natürlich, wenn wir bei eurer Hochzeit zum Essen eingeplant sind. Falls ihr das nicht so vorgesehen habt, gebt uns bitte Bescheid, damit wir uns selbst um unsere Verpflegung kümmern können.",
+      "Wenn es euer Sitzplan zulässt, ist es von Vorteil uns mit zu euren Gästen zu setzen – so haben wir alles im Blick und können nichts verpassen.",
+    ],
+  },
+  {
+    q: "Was ist, wenn das Wetter schlecht ist?",
+    paragraphs: [
+      "Bei Paar- und Familienshootings können wir den Termin gerne flexibel verschieben.",
+      "Bei Hochzeiten weichen wir auf überdachte Möglichkeiten aus, sofern möglich. Außerdem bringen wir einen durchsichtigen Regenschirm mit – und wenn ihr kein Problem damit habt, nass zu werden, können wir auch Bilder im Regen machen. Alternativ bieten wir euch auch ein After-Wedding-Shooting an.",
+    ],
+  },
+  {
+    q: "Wie weit im Voraus sollten wir euch anfragen?",
+    paragraphs: [
+      "Termine für Paar- und Familienshootings finden wir meist recht kurzfristig (1–2 Wochen). Nur von Mai bis September solltet ihr lieber etwas mehr Zeit einplanen.",
+      "Für euren Hochzeitstermin solltet ihr am besten so früh wie möglich anfragen. Wir sind oft schon 1 Jahr im Voraus gebucht.",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Fragen & Antworten – MiNi Photography"
+  description="Häufig gestellte Fragen rund um Fotoshootings mit MiNi Photography."
+>
+  <Nav />
+  <main id="main">
+
+    <!-- ─── Hero ─────────────────────────────────────────── -->
+    <section class="faq-hero">
+      <img
+        src="/images/hero/Titelbild-Fragen-Antworten-1.jpg"
+        alt="MiNi Photography – Fragen & Antworten"
+        class="faq-hero__img"
+        loading="eager"
+        fetchpriority="high"
+        width="1920"
+        height="800"
+      />
+      <div class="faq-hero__overlay"></div>
+      <div class="faq-hero__inner">
+        <a href="/" class="faq-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="13" y1="8" x2="3" y2="8"/><polyline points="7,4 3,8 7,12"/>
+          </svg>
+          Startseite
+        </a>
+        <h1 class="faq-hero__title">Fragen &amp; <em>Antworten.</em></h1>
+      </div>
+    </section>
+
+    <!-- ─── FAQ ──────────────────────────────────────────── -->
+    <section class="faq-body">
+      <div class="faq-body__inner">
+
+        <div class="faq-header">
+          <span class="section-label">FAQ</span>
+          <h2 class="faq-heading">Eure Fragen.<br/><em>Unsere Antworten.</em></h2>
+        </div>
+
+        <div class="faq-list">
+          {faqs.map((item, i) => (
+            <details class="faq-item" name="faq">
+              <summary class="faq-question">
+                <span class="faq-q-num">0{i + 1}</span>
+                <span>{item.q}</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="4,6 8,10 12,6"/>
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                {item.paragraphs.map((p) => <p>{p}</p>)}
+                {item.link && (
+                  <a href={item.link.href} class="faq-link">
+                    {item.link.label}
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </details>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── CTA ──────────────────────────────────────────── -->
+    <section class="faq-cta">
+      <div class="faq-cta__inner">
+        <span class="faq-cta__eyebrow">Schreibt uns!</span>
+        <div class="faq-cta__image">
+          <img src="/images/cta/uns-bei-der-arbeit.jpg" alt="Miette und Nicolai bei der Arbeit" loading="lazy" />
+        </div>
+        <h2 class="faq-cta__heading">Noch offene Fragen?<br/><em>Wir sind für euch da.</em></h2>
+        <a href="/#kontakt" class="faq-cta__btn">
+          Kontakt
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ─── Hero ────────────────────────────────────────────────── */
+.faq-hero {
+  position: relative;
+  background: var(--color-bark);
+  padding: clamp(18rem, 35vw, 30rem) var(--container-gutter) clamp(9rem, 15vw, 15rem);
+  overflow: hidden;
+}
+
+.faq-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.faq-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(92, 72, 67, 0.75) 0%,
+    rgba(30, 24, 23, 0.45) 100%
+  );
+}
+
+.faq-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.faq-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(196,181,172,0.6);
+  transition: color 0.3s ease;
+}
+
+.faq-hero__back:hover { color: rgba(196,181,172,1); }
+
+.faq-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  color: var(--color-cream);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.faq-hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: #c4b5ac;
+}
+
+/* ─── FAQ Body ────────────────────────────────────────────── */
+.faq-body {
+  background: var(--color-cream);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter);
+}
+
+.faq-body__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.faq-header {
+  position: sticky;
+  top: 120px;
+}
+
+.faq-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.15;
+  margin-top: var(--space-3);
+}
+
+.faq-heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+/* ─── Accordion ───────────────────────────────────────────── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-top: 1px solid rgba(196,181,172,0.3);
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid rgba(196,181,172,0.3);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6) 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  transition: color 0.25s ease;
+  user-select: none;
+}
+
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::marker { display: none; }
+
+.faq-question:hover { color: var(--color-clay); }
+
+.faq-q-num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--color-clay);
+  flex-shrink: 0;
+  width: 28px;
+}
+
+.faq-question span:not(.faq-q-num) {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.faq-chevron {
+  flex-shrink: 0;
+  color: var(--color-clay);
+  transition: transform 0.3s ease;
+}
+
+details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 0 var(--space-6) calc(28px + var(--space-4));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  animation: faqFadeDown 0.3s ease;
+}
+
+@keyframes faqFadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.faq-answer p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+  max-width: 60ch;
+}
+
+.faq-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--color-clay);
+  transition: color 0.25s ease;
+  margin-top: var(--space-2);
+}
+
+.faq-link:hover { color: var(--color-bark); }
+
+.faq-link svg { transition: transform 0.25s ease; }
+.faq-link:hover svg { transform: translateX(4px); }
+
+/* ─── CTA ──────────────────────────────────────────────────── */
+.faq-cta {
+  background: var(--color-parchment);
+  padding: clamp(3rem, 6vw, 5rem) var(--container-gutter);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.faq-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.faq-cta__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: var(--space-6);
+}
+
+.faq-cta__image {
+  display: block;
+  width: clamp(100px, 15vw, 160px);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+}
+
+.faq-cta__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.faq-cta__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-8);
+}
+
+.faq-cta__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.faq-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  border: 1px solid rgba(92,72,67,0.3);
+  padding: var(--space-4) var(--space-8);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.faq-cta__btn:hover {
+  background: rgba(145,124,113,0.1);
+  border-color: rgba(92,72,67,0.6);
+}
+
+.faq-cta__btn svg { transition: transform 0.25s ease; }
+.faq-cta__btn:hover svg { transform: translateX(5px); }
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .faq-body__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .faq-header {
+    position: static;
+  }
+}
+</style>

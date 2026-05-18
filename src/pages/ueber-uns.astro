@@ -1,0 +1,683 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const reasons = [
+  {
+    title: "Verschiedene Perspektiven",
+    text: "Zwei Fotografen bedeuten verschiedene Blickwinkel. So bleibt kein Moment unentdeckt!",
+  },
+  {
+    title: "Alles in einem",
+    text: "Fotos und Videos, wir haben beides im Griff. Egal, ob Hochzeit oder Familienfeier.",
+  },
+  {
+    title: "Effizient und Echt",
+    text: "Vier Hände, mehr Aufnahmen. Euer Tag wird dokumentiert, während ihr ihn lebt.",
+  },
+  {
+    title: "Eingespieltes Team",
+    text: "Unsere Harmonie sorgt für eine entspannte Atmosphäre. Authentizität steht bei uns an erster Stelle.",
+  },
+  {
+    title: "Doppelter Spaß",
+    text: "Mit uns wird nicht nur gearbeitet, sondern auch gelacht. Wir machen den Prozess genauso angenehm wie die Bilder.",
+  },
+  {
+    title: "Doppelte Aufmerksamkeit",
+    text: "Und selbstverständlich, weil eure Geschichte die doppelte Aufmerksamkeit verdient!",
+  },
+];
+---
+
+<BaseLayout
+  title="Über uns – MiNi Photography"
+  description="Wir sind Miette und Nicolai – ein eingespieltes Fotografen-Duo aus Rodgau. Erfahre mehr über uns und unsere Leidenschaft für Fotografie."
+>
+  <Nav />
+  <main id="main">
+
+    <!-- ─── Hero ─────────────────────────────────────────── -->
+    <section class="au-hero" aria-label="Über uns">
+      <div class="au-hero__img">
+        <img
+          src="/images/about/miette und nicolai.jpg"
+          alt="Miette und Nicolai – MiNi Photography"
+          width="800"
+          height="1000"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="au-hero__overlay"></div>
+      <div class="au-hero__content">
+        <a href="/" class="au-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="13" y1="8" x2="3" y2="8"/><polyline points="7,4 3,8 7,12"/>
+          </svg>
+          Startseite
+        </a>
+        <div class="au-hero__text">
+          <h1 class="au-hero__title">Über <em>uns.</em></h1>
+        </div>
+      </div>
+      <div class="au-hero__scroll" aria-hidden="true">
+        <div class="au-hero__scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ─── Das sind wir ─────────────────────────────────── -->
+    <section class="au-intro">
+      <div class="au-intro__inner">
+        <h2 class="au-intro__title">Das sind wir</h2>
+        <p class="au-intro__subtitle">Miette &amp; Nicolai</p>
+        <p class="au-intro__tagline">Eure Fotografen<br/>für Hochzeiten, Paare und Familien.</p>
+        <p class="au-intro__body">Seit neun Jahren teilen wir Höhen und Tiefen miteinander und seit dem 22.02.2022 sind wir glücklich verheiratet. Unser 5-jähriger Hund Tommy macht unser kleines Glück komplett. Die Fotografie ist schon seit einigen Jahren eine gemeinsame Leidenschaft von uns. Vor über drei Jahren haben wir dann beschlossen, unsere Leidenschaft zum Beruf zu machen. Seitdem sind wir gemeinsam als Fotografen für Hochzeiten, Paare und Familien in Frankfurt und Umgebung&nbsp;unterwegs.</p>
+      </div>
+    </section>
+
+    <!-- ─── Portraits: Miette & Nicolai ──────────────────── -->
+    <section class="au-team">
+      <div class="au-team__inner">
+        <div class="au-team__grid">
+
+          <article class="au-person">
+            <div class="au-person__visual">
+              <img
+                src="/images/about/miette.jpg"
+                alt="Miette – MiNi Photography"
+                width="800"
+                height="1000"
+                loading="lazy"
+              />
+            </div>
+            <h2 class="au-person__name">Miette</h2>
+            <div class="au-person__body">
+              <p>Ich bin Miette, 24 Jahre alt, und komme ursprünglich aus der Nähe von Leipzig – für die Liebe bin ich 2019 nach Hessen gezogen.</p>
+              <p>Mit etwa 14 Jahren habe ich meine Leidenschaft für die Fotografie entdeckt, als ich angefangen habe mit meiner besten Freundin kleine Fotoshootings zu machen. Zuerst nur mit meinem Handy und dann mit meiner ersten Spiegelreflexkamera.</p>
+              <p>In meiner Freizeit entdecke ich am liebsten neue Orte mit Nicolai und unserem Hund Tommy. Außerdem verbringe ich gerne Zeit mit meinen Freunden.</p>
+              <p>Ich liebe es, zwischenmenschliche Beziehungen durch meine Linse festzuhalten und mit anderen zu teilen.</p>
+            </div>
+          </article>
+
+          <article class="au-person">
+            <div class="au-person__visual">
+              <img
+                src="/images/about/nicolai.jpg"
+                alt="Nicolai – MiNi Photography"
+                width="800"
+                height="1000"
+                loading="lazy"
+              />
+            </div>
+            <h2 class="au-person__name">Nicolai</h2>
+            <div class="au-person__body">
+              <p>Ich heiße Nicolai und bin 26 Jahre alt. Einen Großteil meines Lebens habe ich in Seligenstadt verbracht, wo ich meine Leidenschaft für die Fotografie und die digitale Bearbeitung entdeckt habe.</p>
+              <p>Ich liebe es, hinter der Kamera zu stehen und auch mal kreative Blickwinkel auszuprobieren. Außerdem trage ich die Hauptverantwortung für unser Equipment und unsere Website.</p>
+              <p>Dank meines Bruders, der mich schon in jungen Jahren für Videospiele begeistert hat, bin ich seit meinem 10. Lebensjahr leidenschaftlicher Gamer. Bis heute spiele ich gerne sowohl am Computer als auch auf meiner Xbox.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Tommy ─────────────────────────────────────────── -->
+    <section class="au-tommy">
+      <div class="au-tommy__inner">
+        <div class="au-tommy__visual">
+          <img
+            src="/images/about/tommy.jpg"
+            alt="Tommy – der Hund von MiNi Photography"
+            width="800"
+            height="800"
+            loading="lazy"
+          />
+        </div>
+        <h2 class="au-tommy__name">Tommy</h2>
+        <div class="au-tommy__body">
+          <p>Unser treuer Begleiter heißt Tommy, und stammt ursprünglich aus Bulgarien.</p>
+          <p>Seit er etwa ein halbes Jahr alt ist, lebt er bei uns. Tommy ist ein 5-jähriger Wirbelwind voller Energie. Er liebt es, sich beim Spielen auszutoben.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Warum zwei Fotografen ─────────────────────────── -->
+    <section class="au-why">
+      <div class="au-why__inner">
+        <div class="au-why__body">
+          <div class="au-why__text">
+            <h2 class="au-why__heading">Warum zwei <em>Fotografen.</em></h2>
+            <ul class="au-why__list">
+              {reasons.map((r) => (
+                <li class="au-why__item">
+                  <strong>{r.title}:</strong> {r.text}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="au-why__visual">
+            <img src="/images/cta/uns-bei-der-arbeit.jpg" alt="Miette und Nicolai bei der Arbeit" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA ──────────────────────────────────────────── -->
+    <section class="au-cta">
+      <div class="au-cta__inner">
+        <span class="au-cta__eyebrow">Schreibt uns!</span>
+        <div class="au-cta__image">
+          <img src="/images/cta/uns-bei-der-arbeit.jpg" alt="Miette und Nicolai bei der Arbeit" loading="lazy" />
+        </div>
+        <h2 class="au-cta__heading">Wir freuen uns darauf,<br/><em>euch kennenzulernen.</em></h2>
+        <a href="/#kontakt" class="au-cta__btn">
+          Kontakt
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ─── Hero ────────────────────────────────────────────────── */
+.au-hero {
+  position: relative;
+  height: 100dvh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.au-hero__img {
+  position: absolute;
+  inset: 0;
+}
+
+.au-hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  animation: auBreathe 10s ease-in-out infinite;
+}
+
+@keyframes auBreathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.035); }
+}
+
+.au-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(30,20,16,0.85) 0%, rgba(30,20,16,0.25) 50%, rgba(30,20,16,0.1) 100%),
+    linear-gradient(to right, rgba(30,20,16,0.3) 0%, transparent 60%);
+}
+
+.au-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-16) var(--container-gutter);
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.au-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,252,250,0.6);
+  transition: color 0.3s ease;
+  margin-top: 120px;
+}
+
+.au-hero__back:hover { color: rgba(255,252,250,0.9); }
+
+.au-hero__text {
+  padding-bottom: var(--space-8);
+}
+
+.au-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 10rem);
+  font-weight: 700;
+  color: #fffcfa;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: auFadeUp 1s ease forwards 0.4s;
+}
+
+.au-hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: #c4b5ac;
+}
+
+.au-hero__scroll {
+  position: absolute;
+  bottom: var(--space-8);
+  right: var(--container-gutter);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(196,181,172,0.6);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  opacity: 0;
+  animation: auFadeUp 1s ease forwards 1s;
+}
+
+.au-hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, rgba(196,181,172,0.5));
+  margin-bottom: var(--space-2);
+}
+
+@keyframes auFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Das sind wir ─────────────────────────────────────────── */
+.au-intro {
+  background: var(--color-cream);
+  padding: clamp(4rem, 8vw, 7rem) var(--container-gutter);
+}
+
+.au-intro__inner {
+  max-width: 960px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-6);
+}
+
+.au-intro__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  letter-spacing: -0.01em;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-sand);
+  width: 100%;
+}
+
+.au-intro__subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--color-clay);
+  letter-spacing: 0.01em;
+}
+
+.au-intro__tagline {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-clay);
+  line-height: 1.6;
+}
+
+.au-intro__body {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.85;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+/* ─── Team Portraits ────────────────────────────────────────── */
+.au-team {
+  background: var(--color-parchment);
+  padding: clamp(4rem, 8vw, 7rem) var(--container-gutter);
+}
+
+.au-team__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.au-team__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+.au-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.au-person__visual {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: var(--space-8);
+}
+
+.au-person__visual img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: sepia(0.06) contrast(1.02);
+  transition: filter var(--transition-slow);
+}
+
+.au-person__visual:hover img {
+  filter: sepia(0) contrast(1);
+}
+
+.au-person__name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-6);
+}
+
+.au-person__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 42ch;
+}
+
+.au-person__body p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.8;
+}
+
+@media (max-width: 720px) {
+  .au-team__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(3rem, 10vw, 5rem);
+  }
+  .au-person__body {
+    max-width: 52ch;
+  }
+}
+
+/* ─── Tommy ─────────────────────────────────────────────────── */
+.au-tommy {
+  background: var(--color-parchment);
+  padding: 0 var(--container-gutter) clamp(4rem, 8vw, 7rem);
+  border-top: 1px solid rgba(196,181,172,0.35);
+}
+
+.au-tommy__inner {
+  max-width: 680px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+
+.au-tommy__visual {
+  width: 100%;
+  max-width: 380px;
+  overflow: hidden;
+  margin-bottom: var(--space-8);
+}
+
+.au-tommy__visual img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: sepia(0.06) contrast(1.02);
+}
+
+.au-tommy__name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-6);
+}
+
+.au-tommy__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.au-tommy__body p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.8;
+  text-wrap: balance;
+}
+
+/* ─── Warum zwei Fotografen ────────────────────────────────── */
+.au-why {
+  background: var(--color-cream);
+  padding: clamp(3rem, 5vw, 5rem) var(--container-gutter);
+}
+
+.au-why__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.au-why__body {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.au-why__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.au-why__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.au-why__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.au-why__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.au-why__item {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.75;
+}
+
+.au-why__item strong {
+  font-weight: 600;
+}
+
+.au-why__visual {
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+
+.au-why__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .au-why__body {
+    grid-template-columns: 1fr;
+  }
+  .au-why__visual {
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+  }
+}
+
+/* ─── CTA ──────────────────────────────────────────────────── */
+.au-cta {
+  background: var(--color-parchment);
+  padding: clamp(3rem, 6vw, 5rem) var(--container-gutter);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.au-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.au-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.au-cta__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: var(--space-6);
+}
+
+.au-cta__image {
+  display: block;
+  width: clamp(100px, 15vw, 160px);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+}
+
+.au-cta__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.au-cta__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-8);
+}
+
+.au-cta__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.au-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  border: 1px solid rgba(92,72,67,0.3);
+  padding: var(--space-4) var(--space-8);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.au-cta__btn:hover {
+  background: rgba(145,124,113,0.1);
+  border-color: rgba(92,72,67,0.6);
+}
+
+.au-cta__btn svg {
+  transition: transform 0.25s ease;
+}
+
+.au-cta__btn:hover svg {
+  transform: translateX(5px);
+}
+
+/* ─── Responsive misc ──────────────────────────────────────── */
+@media (max-width: 540px) {
+  .au-hero__scroll { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .au-hero__img img { animation: none; }
+  .au-hero__title, .au-hero__scroll { opacity: 1; animation: none; }
+}
+</style>

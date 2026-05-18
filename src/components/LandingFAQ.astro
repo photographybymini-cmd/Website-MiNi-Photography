@@ -1,0 +1,198 @@
+---
+const faqs = [
+  {
+    question: 'Wie läuft eine Buchung bei euch ab?',
+    answer:   'Schreibt uns über das Kontaktformular und erzählt uns von eurem Vorhaben. Wir melden uns innerhalb von 48 Stunden zurück, vereinbaren ein unverbindliches Kennenlerngespräch und klären alle Details. Erst danach sichern wir euren Termin.',
+  },
+  {
+    question: 'Fotografiert ihr zu zweit?',
+    answer:   'Ja — wir sind ein Fotografenpaar und arbeiten immer als Team. Das bedeutet für euch: doppelt so viele Perspektiven, mehr Nähe und das Gefühl, von jemandem begleitet zu werden, der wirklich zuhört.',
+  },
+  {
+    question: 'Begleitet ihr auch Destination Weddings?',
+    answer:   'Sehr gerne! Wir reisen für Hochzeiten und Shootings durch ganz Europa und darüber hinaus. Sprecht uns einfach an — Reisekosten klären wir transparent beim ersten Gespräch.',
+  },
+  {
+    question: 'Wie schnell erhalten wir unsere Bilder?',
+    answer:   'Bei Hochzeiten erhaltet ihr eure fertig bearbeiteten Bilder innerhalb von 8–12 Wochen. Bei Paar- und Familienshootings ist es in der Regel kürzer — meist 3–4 Wochen.',
+  },
+  {
+    question: 'Gibt es auch Highlightvideos?',
+    answer:   'Ja! Zusätzlich zur Fotografie bieten wir cineastische Highlightvideos an, die den Charakter eures Tages auf den Punkt bringen. Fragt uns gerne nach unseren Kombipaketen.',
+  },
+];
+---
+
+<section class="faq" id="faq" aria-label="Häufige Fragen">
+  <div class="container">
+
+    <div class="faq__header reveal">
+      <span class="section-label">Fragen &amp; Antworten</span>
+      <h2 class="faq__title">
+        Was ihr uns<br />
+        <em>häufig fragt.</em>
+      </h2>
+    </div>
+
+    <div class="faq__list">
+      {faqs.map((faq, i) => (
+        <div class={`faq__item reveal reveal--delay-${(i % 3) + 1}`}>
+          <button
+            class="faq__question"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${i}`}
+            id={`faq-btn-${i}`}
+          >
+            <span class="faq__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="faq__q-text">{faq.question}</span>
+            <span class="faq__icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" class="faq__icon-v"/>
+                <line x1="5"  y1="12" x2="19" y2="12"/>
+              </svg>
+            </span>
+          </button>
+
+          <div
+            class="faq__answer"
+            id={`faq-answer-${i}`}
+            role="region"
+            aria-labelledby={`faq-btn-${i}`}
+            aria-hidden="true"
+          >
+            <div class="faq__answer-inner">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.faq__question').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const answerId = btn.getAttribute('aria-controls') ?? '';
+      const answer   = document.getElementById(answerId);
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll<HTMLButtonElement>('.faq__question').forEach((q) => {
+        const id = q.getAttribute('aria-controls') ?? '';
+        const a  = document.getElementById(id);
+        q.setAttribute('aria-expanded', 'false');
+        a?.setAttribute('aria-hidden', 'true');
+      });
+
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer?.setAttribute('aria-hidden', 'false');
+      }
+    });
+  });
+</script>
+
+<style>
+.faq {
+  padding: clamp(5rem, 12vh, 10rem) 0;
+  background: var(--color-cream);
+}
+
+.faq__header {
+  margin-bottom: clamp(3rem, 6vh, 5rem);
+}
+
+.faq__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-top: 0.5rem;
+}
+.faq__title em {
+  font-style: italic;
+  color: var(--color-clay);
+}
+
+.faq__list {
+  max-width: 820px;
+  border-top: 1px solid var(--color-sand);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--color-sand);
+}
+
+.faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq__num {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--color-clay);
+  min-width: 1.8rem;
+  flex-shrink: 0;
+}
+
+.faq__q-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.88rem, 1.15vw, 1rem);
+  font-weight: 300;
+  color: var(--color-ink);
+  flex: 1;
+  transition: color 0.2s ease;
+}
+.faq__question:hover .faq__q-text { color: var(--color-clay); }
+
+.faq__icon {
+  color: var(--color-clay);
+  flex-shrink: 0;
+  display: flex;
+}
+
+.faq__icon-v {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+.faq__question[aria-expanded="true"] .faq__icon-v {
+  transform: scaleY(0);
+}
+
+/* CSS grid-template-rows trick for smooth accordion */
+.faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq__answer[aria-hidden="false"] {
+  grid-template-rows: 1fr;
+}
+
+.faq__answer-inner {
+  overflow: hidden;
+}
+
+.faq__answer-inner p {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--color-muted);
+  padding-bottom: 1.5rem;
+  padding-left: calc(1.8rem + 1.5rem);
+}
+</style>

@@ -1,0 +1,144 @@
+/* ─── About ──────────────────────────────────────────────── */
+.about {
+  background-color: var(--color-cream);
+  padding: var(--space-12) 0 var(--space-8) 0;
+}
+
+.about__container {
+  display: grid;
+  grid-template-columns: 1fr 0.6fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+/* Text Column */
+.about__text {
+  padding-right: var(--space-8);
+}
+
+.about__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-bark);
+  line-height: 1.15;
+  margin-bottom: var(--space-8);
+  quotes: "\201E" "\201C";
+}
+
+.about__heading::before {
+  content: open-quote;
+}
+
+.about__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.about__body p {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  color: var(--color-muted);
+  line-height: var(--leading-body);
+  max-width: 52ch;
+}
+
+/* Signature */
+.about__signature {
+  margin-top: var(--space-10);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.about__signature-line {
+  flex: 0 0 40px;
+  height: 1px;
+  background: var(--color-sand);
+}
+
+.about__signature-names {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-clay);
+  letter-spacing: 0.05em;
+}
+
+/* Portrait Column */
+.about__teambild {
+  padding-top: var(--space-8);
+}
+
+.about__portrait {
+  overflow: hidden;
+}
+
+.about__portrait img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  filter: sepia(0.08) contrast(1.02);
+  transition: filter var(--transition-slow);
+}
+
+.about__portrait:hover img {
+  filter: sepia(0) contrast(1);
+}
+
+.about__teambild-caption {
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-clay);
+  padding: var(--space-2) 0;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 901px) {
+  .about__body p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about__container {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .about__text {
+    padding-right: 0;
+  }
+
+  .about__teambild {
+    padding-top: 0;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .about {
+    padding: var(--space-12) 0;
+  }
+
+  .about__teambild {
+    max-width: 80%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__portrait img {
+    transition: none;
+  }
+}

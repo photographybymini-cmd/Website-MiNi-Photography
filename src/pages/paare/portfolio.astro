@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/portfolio.css';
+
+const photos = [
+  { src: '/images/paare/abenteuer-freude.jpg',    alt: 'Paarshooting – Abenteuer & Freude',    tall: true },
+  { src: '/images/paare/dekoration-zuhause.jpg',  alt: 'Paarshooting – Zuhause & Nähe'                   },
+  { src: '/images/paare/erinnerungen-schaffen.jpg', alt: 'Paarshooting – Erinnerungen'                    },
+  { src: '/images/gallery/01.jpg',                alt: 'Paarshooting – Stimmungsvolles Licht', wide: true },
+  { src: '/images/gallery/03.jpg',                alt: 'Paarshooting – Natürlicher Moment'                },
+  { src: '/images/gallery/05.jpg',                alt: 'Paarshooting – Echte Gefühle',         tall: true },
+  { src: '/images/gallery/07.jpg',                alt: 'Paarshooting – Leichtigkeit'                      },
+  { src: '/images/gallery/09.jpg',                alt: 'Paarshooting – Gemeinsam'                         },
+  { src: '/images/gallery/11.jpg',                alt: 'Paarshooting – Vertrautheit',          wide: true },
+  { src: '/images/gallery/02.jpg',                alt: 'Paarshooting – Blick & Lächeln'                   },
+  { src: '/images/gallery/04.jpg',                alt: 'Paarshooting – Besonderer Augenblick'             },
+];
+---
+
+<BaseLayout
+  title="Paare Portfolio – MiNi Photography"
+  description="Authentische Paarfotografie – unser Portfolio der schönsten Paarshootings. Natürlich, ungestellt und voller Emotion von Miette & Nicolai."
+>
+  <Nav />
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="pf-hero" aria-label="Portfolio Paare">
+      <div class="pf-hero__inner">
+        <a href="/paare" class="pf-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="13" y1="8" x2="3" y2="8"/><polyline points="7,4 3,8 7,12"/>
+          </svg>
+          Paarfotografie
+        </a>
+        <span class="pf-hero__label">Portfolio</span>
+        <h1 class="pf-hero__title"><em>Paare.</em></h1>
+        <p class="pf-hero__count">{photos.length} Aufnahmen</p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <div class="pf-intro">
+      <div class="pf-intro__inner">
+        <div class="pf-intro__text">
+          <h2 class="pf-intro__heading">Eure Liebe, eingefangen<br/>in echten Momenten.</h2>
+          <p class="pf-intro__sub">Kein Posieren, kein Schauspiel – nur ihr zwei und die Magie zwischen euch.</p>
+        </div>
+        <a href="/paare" class="pf-intro__link">
+          Mehr über Paarfotografie
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <section class="pf-grid-section">
+      <div class="pf-grid-section__inner">
+        <div class="pf-grid">
+          {photos.map((p) => (
+            <div class={`pf-item${p.tall ? ' pf-item--tall' : ''}${p.wide ? ' pf-item--wide' : ''}`}>
+              <img src={p.src} alt={p.alt} loading="lazy" />
+              <div class="pf-item__overlay"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pf-cta">
+      <div class="pf-cta__inner">
+        <span class="pf-cta__label">Für euch beide</span>
+        <h2 class="pf-cta__heading">Bereit für <em>euer Shooting?</em></h2>
+        <div class="pf-cta__btns">
+          <a href="/#kontakt" class="pf-cta__btn pf-cta__btn--primary">
+            Jetzt anfragen
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+            </svg>
+          </a>
+          <a href="/preise" class="pf-cta__btn pf-cta__btn--secondary">Preise & Pakete</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>

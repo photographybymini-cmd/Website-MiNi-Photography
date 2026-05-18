@@ -1,0 +1,323 @@
+---
+---
+<section class="contact" id="kontakt" aria-label="Kontakt aufnehmen">
+
+  <div class="contact__bg" aria-hidden="true"></div>
+
+  <div class="contact__inner">
+
+    <!-- Left: header -->
+    <div class="contact__header reveal">
+      <span class="section-label contact__section-label">Sag Hallo</span>
+      <h2 class="contact__title">
+        Erzählt uns<br />
+        <em>von eurem Tag.</em>
+      </h2>
+      <p class="contact__note">
+        Wir antworten innerhalb von<br />
+        48 Stunden — meistens schneller.
+      </p>
+      <address class="contact__address">
+        <a href="mailto:info@mini-foto.de" class="contact__email">info@mini-foto.de</a>
+      </address>
+    </div>
+
+    <!-- Right: form -->
+    <form
+      class="contact__form reveal reveal--delay-1"
+      action="mailto:info@mini-foto.de"
+      method="post"
+      enctype="text/plain"
+      novalidate
+    >
+      <div class="contact__row">
+        <div class="contact__field">
+          <label for="c-name" class="contact__label">Name</label>
+          <input
+            type="text"
+            id="c-name"
+            name="name"
+            class="contact__input"
+            placeholder="Euer Name"
+            required
+            autocomplete="name"
+          />
+        </div>
+        <div class="contact__field">
+          <label for="c-email" class="contact__label">E-Mail</label>
+          <input
+            type="email"
+            id="c-email"
+            name="email"
+            class="contact__input"
+            placeholder="eure@email.de"
+            required
+            autocomplete="email"
+          />
+        </div>
+      </div>
+
+      <div class="contact__row">
+        <div class="contact__field">
+          <label for="c-type" class="contact__label">Art der Anfrage</label>
+          <div class="contact__select-wrap">
+            <select id="c-type" name="type" class="contact__input contact__select">
+              <option value="">Bitte wählen …</option>
+              <option value="hochzeit">Hochzeit</option>
+              <option value="paarshooting">Paarshooting</option>
+              <option value="familienshooting">Familienshooting</option>
+              <option value="video">Highlightvideo</option>
+              <option value="sonstiges">Sonstiges</option>
+            </select>
+            <svg class="contact__select-chevron" width="12" height="7" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+              <polyline points="1 1 6 6 11 1"/>
+            </svg>
+          </div>
+        </div>
+        <div class="contact__field">
+          <label for="c-date" class="contact__label">Datum (falls bekannt)</label>
+          <input
+            type="text"
+            id="c-date"
+            name="datum"
+            class="contact__input"
+            placeholder="z.&thinsp;B. 12. Juli 2026"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <div class="contact__field">
+        <label for="c-msg" class="contact__label">Eure Nachricht</label>
+        <textarea
+          id="c-msg"
+          name="nachricht"
+          class="contact__input contact__textarea"
+          placeholder="Erzählt uns ein bisschen von euch, eurem Vorhaben und was euch wichtig ist …"
+          rows="5"
+          required
+        ></textarea>
+      </div>
+
+      <div class="contact__footer">
+        <button type="submit" class="contact__btn">
+          <span>Anfrage senden</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+        <p class="contact__privacy">
+          Mit dem Absenden stimmt ihr unserer
+          <a href="/datenschutz">Datenschutzerklärung</a> zu.
+        </p>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+<style>
+.contact {
+  position: relative;
+  padding: clamp(5rem, 12vh, 10rem) 0;
+  overflow: hidden;
+}
+
+.contact__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--color-bark);
+}
+.contact__bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 60%, rgba(145, 124, 113, 0.28) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 10%, rgba(92, 72, 67, 0.35) 0%, transparent 48%),
+    radial-gradient(ellipse at 50% 100%, rgba(30, 24, 23, 0.5) 0%, transparent 60%);
+}
+
+.contact__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: start;
+}
+
+/* ── Left header ──────────────────────────────── */
+.contact__header {
+  position: sticky;
+  top: 5rem;
+}
+
+.contact__section-label { color: rgba(255, 252, 250, 0.45); }
+
+.contact__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-cream);
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.contact__title em {
+  font-style: italic;
+  color: rgba(255, 252, 250, 0.65);
+}
+
+.contact__note {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(255, 252, 250, 0.45);
+  margin-bottom: 1.5rem;
+}
+
+.contact__address { font-style: normal; }
+
+.contact__email {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: rgba(255, 252, 250, 0.55);
+  border-bottom: 1px solid rgba(255, 252, 250, 0.18);
+  padding-bottom: 0.15rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.contact__email:hover {
+  color: rgba(255, 252, 250, 0.85);
+  border-bottom-color: rgba(255, 252, 250, 0.45);
+}
+
+/* ── Form ─────────────────────────────────────── */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.contact__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.contact__label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 252, 250, 0.42);
+}
+
+.contact__input {
+  background: rgba(255, 252, 250, 0.055);
+  border: 1px solid rgba(255, 252, 250, 0.1);
+  border-radius: 0;
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 300;
+  padding: 0.88rem 1rem;
+  width: 100%;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.22s ease, background 0.22s ease;
+}
+.contact__input::placeholder { color: rgba(255, 252, 250, 0.2); }
+.contact__input:focus {
+  border-color: rgba(255, 252, 250, 0.3);
+  background: rgba(255, 252, 250, 0.09);
+}
+
+.contact__textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.65;
+}
+
+.contact__select-wrap { position: relative; }
+.contact__select      { cursor: pointer;    }
+.contact__select option {
+  background: var(--color-bark);
+  color: var(--color-cream);
+}
+.contact__select-chevron {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255, 252, 250, 0.35);
+}
+
+.contact__footer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding-top: 0.4rem;
+}
+
+.contact__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  background: var(--color-clay);
+  padding: 0.95rem 2.2rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.contact__btn:hover { background: rgba(145, 124, 113, 0.8); transform: translateY(-2px); }
+.contact__btn:active { transform: translateY(0); }
+
+.contact__privacy {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: rgba(255, 252, 250, 0.3);
+  line-height: 1.6;
+}
+.contact__privacy a {
+  color: rgba(255, 252, 250, 0.45);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 860px) {
+  .contact__inner { grid-template-columns: 1fr; }
+  .contact__header { position: static; }
+}
+
+@media (max-width: 560px) {
+  .contact__row { grid-template-columns: 1fr; }
+}
+</style>

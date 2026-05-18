@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Gutscheine – MiNi Photography"
+  description="Fotoshooting-Gutscheine von MiNi Photography – das perfekte Geschenk."
+>
+  <Nav />
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <a href="/" class="page-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="13" y1="8" x2="3" y2="8"/><polyline points="7,4 3,8 7,12"/>
+          </svg>
+          Zurück
+        </a>
+        <h1 class="page-hero__title">Gutscheine</h1>
+      </div>
+    </section>
+
+    <section class="page-body">
+      <div class="page-body__inner">
+        <!-- Inhalt folgt -->
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-bark);
+  padding: clamp(7rem, 12vw, 10rem) var(--container-gutter) clamp(3rem, 5vw, 4rem);
+}
+
+.page-hero__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.page-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(196,181,172,0.6);
+  transition: color 0.3s ease;
+}
+
+.page-hero__back:hover { color: rgba(196,181,172,1); }
+
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  color: var(--color-cream);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.page-body {
+  background: var(--color-cream);
+  padding: clamp(3rem, 6vw, 6rem) var(--container-gutter);
+  min-height: 40vh;
+}
+
+.page-body__inner {
+  max-width: 720px;
+  margin-inline: auto;
+}
+</style>

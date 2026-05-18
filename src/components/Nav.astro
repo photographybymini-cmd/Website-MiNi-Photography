@@ -1,0 +1,93 @@
+---
+import '../styles/nav.css';
+---
+<nav class="nav" role="navigation" aria-label="Hauptnavigation">
+  <a href="/" class="nav__logo" aria-label="MiNi Fotografie — Startseite">
+    <img src="/images/logo.png" alt="MiNi Photography Logo" class="nav__logo-img" width="64" height="64" />
+  </a>
+
+  <ul class="nav__links" role="list">
+    <li><a href="/#start" class="nav__link">Start</a></li>
+    <li><a href="/hochzeiten" class="nav__link">Hochzeiten</a></li>
+    <li><a href="/paare" class="nav__link">Paare</a></li>
+    <li><a href="/familie" class="nav__link">Familie</a></li>
+    <li class="nav__dropdown">
+      <button class="nav__link nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+        Infos
+        <svg class="nav__dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="1 1 5 5 9 1"/>
+        </svg>
+      </button>
+      <ul class="nav__submenu" role="list">
+        <li><a href="/ueber-uns" class="nav__submenu-link">Über Uns</a></li>
+        <li><a href="/faq" class="nav__submenu-link">Fragen &amp; Antworten</a></li>
+        <li><a href="/preise" class="nav__submenu-link">Preise &amp; Pakete</a></li>
+        <li><a href="/gutscheine" class="nav__submenu-link">Gutscheine</a></li>
+        <li><a href="/blog" class="nav__submenu-link">Blog</a></li>
+      </ul>
+    </li>
+    <li><a href="/#kontakt" class="nav__link">Kontakt</a></li>
+  </ul>
+
+  <a
+    href="https://instagram.com/photography.by.mini"
+    class="nav__instagram"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="MiNi Photography auf Instagram"
+  >
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+    </svg>
+  </a>
+
+  <button
+    class="nav__hamburger"
+    aria-label="Menü öffnen"
+    aria-expanded="false"
+    aria-controls="nav-overlay"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div
+  class="nav__overlay"
+  id="nav-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation"
+>
+  <button class="nav__overlay-close" aria-label="Menü schließen">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <div class="nav__overlay-content">
+    <a href="/#start" class="nav__overlay-link">Start</a>
+    <a href="/hochzeiten" class="nav__overlay-link">Hochzeiten</a>
+    <a href="/paare" class="nav__overlay-link">Paare</a>
+    <a href="/familie" class="nav__overlay-link">Familie</a>
+    <div class="nav__overlay-group">
+      <button class="nav__overlay-link nav__overlay-toggle" aria-expanded="false">
+        Infos
+        <svg class="nav__overlay-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="1 1 6 6 11 1"/>
+        </svg>
+      </button>
+      <div class="nav__overlay-sub">
+        <a href="/ueber-uns" class="nav__overlay-sublink">Über Uns</a>
+        <a href="/faq" class="nav__overlay-sublink">Fragen &amp; Antworten</a>
+        <a href="/preise" class="nav__overlay-sublink">Preise &amp; Pakete</a>
+        <a href="/gutscheine" class="nav__overlay-sublink">Gutscheine</a>
+        <a href="/blog" class="nav__overlay-sublink">Blog</a>
+      </div>
+    </div>
+    <a href="/#kontakt" class="nav__overlay-link">Kontakt</a>
+  </div>
+</div>

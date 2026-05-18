@@ -1,0 +1,123 @@
+---
+import '../styles/hero.css';
+
+const slides = [
+  {
+    image: '/images/hero/Titelbild-Hochzeitsfotografie.jpg',
+    alt: 'Hochzeitsfotograf Rodgau – eingefangen von MiNi Fotografie',
+    eyebrow: 'Hochzeitsfotografie',
+    title: 'Wir begleiten eure Hochzeit',
+    sub: 'Damit die Momente niemals vergehen',
+  },
+  {
+    image: '/images/hero/Titelbild-Paarfotografie.jpg',
+    alt: 'Paarfotografie Rodgau – MiNi Fotografie',
+    eyebrow: 'Paarfotografie',
+    title: 'Zwei Herzen, eine Seele',
+    sub: 'Wir halten eure Liebe in Bildern fest',
+  },
+  {
+    image: '/images/hero/Titelbild-Familienfotografie.jpg',
+    alt: 'Familienfotograf Rodgau– MiNi Fotografie',
+    eyebrow: 'Familienfotografie',
+    title: 'Familie ist das Wichtigste',
+    sub: 'Wir frieren euer größtes Glück in Bildern ein',
+  },
+];
+---
+
+<section class="hero" id="start" aria-label="Startbereich">
+
+  <!-- Slides -->
+  {slides.map((slide, i) => (
+    <div class={`hero__slide${i === 0 ? ' is-active' : ''}`} data-index={i}>
+      <div class="hero__image-wrap">
+        <img
+          src={slide.image}
+          alt={slide.alt}
+          width="1920"
+          height="1080"
+          loading={i === 0 ? 'eager' : 'lazy'}
+          fetchpriority={i === 0 ? 'high' : 'auto'}
+        />
+      </div>
+      <div class="hero__content">
+        <span class="hero__eyebrow">{slide.eyebrow}</span>
+        <h1 class="hero__title">{slide.title}</h1>
+        <p>&nbsp;</p>
+        <span class="hero__sub">{slide.sub}</span>
+        <div class="hero__cta">
+          <a href="#galerie" class="hero__cta-btn">
+            Unser Angebot erkunden
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="8" x2="13" y2="8"/>
+              <polyline points="9,4 13,8 9,12"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <!-- Dot navigation -->
+  <div class="hero__dots" role="tablist" aria-label="Slideshow Navigation">
+    {slides.map((_, i) => (
+      <button
+        class={`hero__dot${i === 0 ? ' is-active' : ''}`}
+        role="tab"
+        aria-selected={i === 0 ? 'true' : 'false'}
+        aria-label={`Slide ${i + 1}`}
+        data-dot={i}
+      />
+    ))}
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll" aria-hidden="true">
+    <div class="hero__scroll-line"></div>
+    <span class="hero__scroll-label">Scroll</span>
+  </div>
+</section>
+
+<script>
+  const DURATION = 6000;
+
+  const slides = Array.from(document.querySelectorAll<HTMLElement>('.hero__slide'));
+  const dots   = Array.from(document.querySelectorAll<HTMLButtonElement>('.hero__dot'));
+  let current  = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(next: number) {
+    slides[current].classList.remove('is-active');
+    dots[current].classList.remove('is-active');
+    dots[current].setAttribute('aria-selected', 'false');
+
+    current = next;
+
+    slides[current].classList.add('is-active');
+    dots[current].classList.add('is-active');
+    dots[current].setAttribute('aria-selected', 'true');
+  }
+
+  function advance() {
+    goTo((current + 1) % slides.length);
+  }
+
+  function start() {
+    timer = setInterval(advance, DURATION);
+  }
+
+  function reset() {
+    clearInterval(timer);
+    start();
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      goTo(i);
+      reset();
+    });
+  });
+
+  start();
+</script>

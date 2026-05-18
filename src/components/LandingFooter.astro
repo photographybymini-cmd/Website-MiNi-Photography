@@ -1,0 +1,174 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer" aria-label="Seitenende">
+
+  <div class="footer__inner">
+
+    <div class="footer__top">
+      <a href="/" class="footer__logo" aria-label="MiNi Photography — Zurück zur Startseite">
+        <img src="/images/logo.png" alt="MiNi Photography" width="70" height="70" />
+      </a>
+      <p class="footer__tagline">
+        Miette &amp; Nicolai —<br />
+        <em>Erinnerungen für immer.</em>
+      </p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Footer-Navigation">
+      <a href="/hochzeiten" class="footer__link">Hochzeiten</a>
+      <a href="/paare"      class="footer__link">Paare</a>
+      <a href="/familie"    class="footer__link">Familie</a>
+      <a href="/ueber-uns"  class="footer__link">Über uns</a>
+      <a href="/faq"        class="footer__link">FAQ</a>
+      <a href="/#kontakt"   class="footer__link">Kontakt</a>
+    </nav>
+
+    <a
+      href="https://instagram.com/photography.by.mini"
+      class="footer__instagram"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="MiNi Photography auf Instagram (@photography.by.mini)"
+    >
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+      </svg>
+      @photography.by.mini
+    </a>
+
+    <div class="footer__rule" role="separator"></div>
+
+    <div class="footer__bottom">
+      <span class="footer__copy">&copy; {year} MiNi Photography</span>
+      <nav class="footer__legal" aria-label="Rechtliches">
+        <a href="/impressum"   class="footer__legal-link">Impressum</a>
+        <a href="/datenschutz" class="footer__legal-link">Datenschutz</a>
+      </nav>
+    </div>
+
+  </div>
+
+</footer>
+
+<style>
+.footer {
+  background: var(--color-ink);
+  padding: clamp(4rem, 8vh, 6rem) 0 clamp(2rem, 4vh, 3rem);
+}
+
+.footer__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(2rem, 4vh, 3rem);
+}
+
+.footer__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.footer__logo img {
+  height: 64px;
+  width: auto;
+  opacity: 0.7;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.25s ease;
+}
+.footer__logo:hover img { opacity: 0.95; }
+
+.footer__tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-weight: 300;
+  color: rgba(255, 252, 250, 0.42);
+  line-height: 1.45;
+}
+.footer__tagline em {
+  font-style: italic;
+  color: rgba(255, 252, 250, 0.62);
+}
+
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem 2rem;
+}
+
+.footer__link {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: rgba(255, 252, 250, 0.38);
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
+}
+.footer__link:hover { color: rgba(255, 252, 250, 0.75); }
+
+.footer__instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: rgba(255, 252, 250, 0.35);
+  transition: color 0.2s ease;
+}
+.footer__instagram:hover { color: var(--color-clay); }
+
+.footer__rule {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 252, 250, 0.07);
+}
+
+.footer__bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.footer__copy {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: rgba(255, 252, 250, 0.22);
+}
+
+.footer__legal {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer__legal-link {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: rgba(255, 252, 250, 0.28);
+  transition: color 0.2s ease;
+}
+.footer__legal-link:hover { color: rgba(255, 252, 250, 0.6); }
+
+@media (max-width: 500px) {
+  .footer__bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>

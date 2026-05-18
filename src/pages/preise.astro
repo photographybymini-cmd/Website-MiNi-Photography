@@ -1,0 +1,783 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const packages = [
+  {
+    name: "Bronze",
+    price: "600",
+    featured: false,
+    features: [
+      { text: "2 Stunden Begleitung durch 2 Fotografen", highlight: false },
+      { text: "Mind. 100 bearbeitete Bilder", highlight: false },
+      { text: "Onlinegalerie zum Download", highlight: false },
+      { text: "Anfahrt 35 ct./km", highlight: false },
+      { text: "Bearbeitungszeit bis zu 14 Tage", highlight: false },
+    ],
+  },
+  {
+    name: "Silber",
+    price: "1.100",
+    featured: false,
+    badge: "Beliebteste Wahl",
+    features: [
+      { text: "5 Stunden Begleitung durch 2 Fotografen", highlight: false },
+      { text: "Mind. 200 bearbeitete Bilder", highlight: false },
+      { text: "Onlinegalerie zum Download", highlight: false },
+      { text: "50 km Anfahrt inkl., dann 35 ct/km", highlight: false },
+      { text: "Bearbeitungszeit bis zu 21 Tage", highlight: false },
+      { text: "Erste Bilder nach 48 Stunden", highlight: true },
+      { text: "inkl. Drohnenaufnahmen", highlight: true },
+    ],
+  },
+  {
+    name: "Gold",
+    price: "1.900",
+    featured: false,
+    features: [
+      { text: "10 Stunden Begleitung durch 2 Fotografen", highlight: false },
+      { text: "Mind. 400 bearbeitete Bilder", highlight: false },
+      { text: "Onlinegalerie zum Download", highlight: false },
+      { text: "50 km Anfahrt inkl., dann 35 ct/km", highlight: false },
+      { text: "Bearbeitungszeit bis zu 30 Tage", highlight: false },
+      { text: "Erste Bilder nach 48 Stunden", highlight: true },
+      { text: "inkl. Drohnenaufnahmen", highlight: true },
+      { text: "inkl. Kennenlernshooting", highlight: true },
+    ],
+  },
+];
+
+const extras = [
+  { label: "Highlichtvideo", detail: "bis zu 10 Minuten", price: "auf Anfrage" },
+  { label: "Drohnenaufnahmen", detail: "", price: "30 €" },
+  { label: "Kennenlernshooting", detail: "Paket Classic", price: "100 €" },
+  { label: "After-Wedding Shooting", detail: "Paket Classic", price: "100 €" },
+];
+
+const shootingPackages = [
+  {
+    name: "Basic",
+    price: "100",
+    features: [
+      { text: "bis zu 20 Minuten Shooting mit 2 Fotografen" },
+      { text: "10 bearbeitete Fotos (jedes weitere 4 €)" },
+      { text: "Onlinegalerie zum Download der Fotos" },
+      { text: "Anfahrt 35 ct./km" },
+      { text: "Bearbeitungszeit bis zu 7 Tage" },
+    ],
+  },
+  {
+    name: "Classic",
+    price: "150",
+    badge: "Beliebteste Wahl",
+    features: [
+      { text: "bis zu 1 Stunde Shooting mit 2 Fotografen" },
+      { text: "Mind. 30 bearbeitete Fotos" },
+      { text: "Onlinegalerie zum Download der Fotos" },
+      { text: "Anfahrt 30 km inkl., dann 35 ct/km" },
+      { text: "Bearbeitungszeit bis zu 7 Tage" },
+    ],
+  },
+  {
+    name: "Premium",
+    price: "200",
+    features: [
+      { text: "bis zu 2 Stunden Shooting mit 2 Fotografen" },
+      { text: "Mind. 50 bearbeitete Fotos" },
+      { text: "Onlinegalerie zum Download der Fotos" },
+      { text: "Anfahrt 50 km inkl., dann 35 ct/km" },
+      { text: "Bearbeitungszeit bis zu 10 Tage" },
+    ],
+  },
+];
+
+const shootingExtras = [
+  { label: "Highlightvideo", detail: "ca. 2–5 Minuten", price: "auf Anfrage" },
+  { label: "Drohnenaufnahmen", detail: "", price: "20 €" },
+];
+---
+
+<BaseLayout
+  title="Preise & Pakete – MiNi Photography"
+  description="Unsere Hochzeitspakete und Preise für Fotografie mit MiNi Photography."
+>
+  <Nav />
+  <main id="main">
+
+    <!-- ─── Hero ─────────────────────────────────────────── -->
+    <section class="pr-hero">
+      <img
+        src="/images/hero/Titelbild-Preise-Pakete.jpg"
+        alt="MiNi Photography – Preise & Pakete"
+        class="pr-hero__img"
+        loading="eager"
+        fetchpriority="high"
+        width="1920"
+        height="800"
+      />
+      <div class="pr-hero__overlay"></div>
+      <div class="pr-hero__inner">
+        <a href="/" class="pr-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="13" y1="8" x2="3" y2="8"/><polyline points="7,4 3,8 7,12"/>
+          </svg>
+          Startseite
+        </a>
+        <h1 class="pr-hero__title">Preise &amp; <em>Pakete.</em></h1>
+      </div>
+    </section>
+
+    <!-- ─── Hochzeitspakete ───────────────────────────────── -->
+    <section class="pr-packages">
+      <div class="pr-packages__inner">
+
+        <header class="pr-packages__header">
+          <h2 class="pr-packages__title">Hochzeitspakete</h2>
+          <p class="pr-packages__sub">Eure Investition in unvergessliche Erinnerungen.</p>
+        </header>
+
+        <div class="pr-grid">
+          {packages.map((pkg) => (
+            <article class={`pr-card${pkg.featured ? ' pr-card--featured' : ''}`}>
+              {pkg.badge && (
+                <span class="pr-card__badge">{pkg.badge}</span>
+              )}
+              <div class="pr-card__header">
+                <h3 class="pr-card__name">{pkg.name}</h3>
+                <div class="pr-card__price-wrap">
+                  <span class="pr-card__price">{pkg.price}</span>
+                  <span class="pr-card__currency">€</span>
+                </div>
+              </div>
+              <div class="pr-card__divider"></div>
+              <ul class="pr-card__list">
+                {pkg.features.map((f) => (
+                  <li class={`pr-card__item${f.highlight ? ' pr-card__item--highlight' : ''}`}>
+                    <svg class="pr-card__check" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="3,8 6,11 13,4"/>
+                    </svg>
+                    <span>{f.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <p class="pr-footnote">* Individuelle Pakete sind natürlich auch möglich.</p>
+
+      </div>
+    </section>
+
+    <!-- ─── Zusatzleistungen ──────────────────────────────── -->
+    <section class="pr-extras">
+      <div class="pr-extras__inner">
+        <article class="pr-extras__card">
+          <header class="pr-extras__header">
+            <span class="section-label">Zusatzleistungen</span>
+            <h2 class="pr-extras__title">Optional <em>dazubuchbar.</em></h2>
+          </header>
+          <div class="pr-extras__grid">
+            {extras.map((e) => (
+              <div class="pr-extra">
+                <span class="pr-extra__label">
+                  {e.label}{e.detail && <span class="pr-extra__detail"> ({e.detail})</span>}
+                </span>
+                <span class="pr-extra__price">{e.price}</span>
+              </div>
+            ))}
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Paar- & Familienshootings ──────────────────────── -->
+    <section class="pr-shooting">
+      <div class="pr-shooting__inner">
+
+        <header class="pr-packages__header">
+          <h2 class="pr-packages__title">Paar- &amp; Familienpakete</h2>
+          <p class="pr-packages__sub">Für alle Momente abseits der Hochzeit.</p>
+        </header>
+
+        <div class="pr-grid pr-grid--equal">
+          {shootingPackages.map((pkg) => (
+            <article class="pr-card">
+              {pkg.badge && (
+                <span class="pr-card__badge">{pkg.badge}</span>
+              )}
+              <div class="pr-card__header">
+                <h3 class="pr-card__name">{pkg.name}</h3>
+                <div class="pr-card__price-wrap">
+                  <span class="pr-card__price">{pkg.price}</span>
+                  <span class="pr-card__currency">€</span>
+                </div>
+              </div>
+              <div class="pr-card__divider"></div>
+              <ul class="pr-card__list">
+                {pkg.features.map((f) => (
+                  <li class="pr-card__item">
+                    <svg class="pr-card__check" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="3,8 6,11 13,4"/>
+                    </svg>
+                    <span>{f.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <p class="pr-footnote">* Individuelle Pakete sind natürlich auch möglich.</p>
+
+        <!-- Zusatzleistungen -->
+        <div class="pr-shooting__extras">
+          <article class="pr-extras__card">
+            <header class="pr-extras__header">
+              <span class="section-label">Zusatzleistungen</span>
+              <h2 class="pr-extras__title">Optional <em>dazubuchbar.</em></h2>
+            </header>
+            <div class="pr-extras__grid">
+              {shootingExtras.map((e) => (
+                <div class="pr-extra">
+                  <span class="pr-extra__label">
+                    {e.label}{e.detail && <span class="pr-extra__detail"> ({e.detail})</span>}
+                  </span>
+                  <span class="pr-extra__price">{e.price}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── CTA ──────────────────────────────────────────── -->
+    <section class="pr-cta">
+      <div class="pr-cta__inner">
+        <span class="pr-cta__eyebrow">Schreibt uns!</span>
+        <div class="pr-cta__image">
+          <img src="/images/cta/uns-bei-der-arbeit.jpg" alt="Miette und Nicolai bei der Arbeit" loading="lazy" />
+        </div>
+        <h2 class="pr-cta__heading">Individuelle Wünsche?<br/><em>Wir schnüren euer Paket.</em></h2>
+        <a href="/#kontakt" class="pr-cta__btn">
+          Kontakt aufnehmen
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ─── Hero ────────────────────────────────────────────────── */
+.pr-hero {
+  position: relative;
+  background: var(--color-bark);
+  padding: clamp(18rem, 35vw, 30rem) var(--container-gutter) clamp(9rem, 15vw, 15rem);
+  overflow: hidden;
+}
+
+.pr-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.pr-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(92, 72, 67, 0.75) 0%,
+    rgba(30, 24, 23, 0.45) 100%
+  );
+}
+
+.pr-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.pr-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(196,181,172,0.6);
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.pr-hero__back:hover { color: rgba(196,181,172,1); }
+
+.pr-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  color: var(--color-cream);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.pr-hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: #c4b5ac;
+}
+
+/* ─── Packages ────────────────────────────────────────────── */
+.pr-packages {
+  background: var(--color-cream);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter) clamp(3rem, 6vw, 6rem);
+}
+
+.pr-packages__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.pr-packages__header {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.pr-packages__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.pr-packages__sub {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  margin-top: var(--space-4);
+}
+
+/* ─── Grid ────────────────────────────────────────────────── */
+.pr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.pr-grid--equal {
+  align-items: stretch;
+}
+
+/* ─── Card ────────────────────────────────────────────────── */
+.pr-card {
+  position: relative;
+  background: var(--color-cream);
+  border: 1px solid rgba(92,72,67,0.15);
+  padding: clamp(2rem, 3.5vw, 2.5rem) clamp(1.5rem, 2.5vw, 2rem) clamp(2rem, 3.5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+
+.pr-card:hover {
+  box-shadow: 0 12px 40px rgba(92,72,67,0.1);
+  transform: translateY(-4px);
+}
+
+/* Featured card */
+.pr-card--featured {
+  background: var(--color-bark);
+  border-color: var(--color-bark);
+}
+
+.pr-card--featured:hover {
+  box-shadow: 0 16px 48px rgba(92,72,67,0.25);
+}
+
+/* Badge */
+.pr-card__badge {
+  position: absolute;
+  top: 0;
+  right: clamp(1.5rem, 2.5vw, 2rem);
+  transform: translateY(-50%);
+  background: var(--color-clay);
+  color: #fffcfa;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: var(--space-2) var(--space-4);
+}
+
+/* Card header */
+.pr-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.pr-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--color-bark);
+}
+
+.pr-card--featured .pr-card__name {
+  color: #fffcfa;
+}
+
+.pr-card__price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.pr-card__price {
+  font-family: var(--font-body);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 400;
+  color: var(--color-clay);
+  line-height: 1;
+}
+
+.pr-card--featured .pr-card__price {
+  color: #c4b5ac;
+}
+
+.pr-card__currency {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-clay);
+}
+
+.pr-card--featured .pr-card__currency {
+  color: #c4b5ac;
+}
+
+/* Divider */
+.pr-card__divider {
+  height: 1px;
+  background: rgba(92,72,67,0.15);
+}
+
+.pr-card--featured .pr-card__divider {
+  background: rgba(255,252,250,0.15);
+}
+
+/* Feature list */
+.pr-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.pr-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-bark);
+  line-height: 1.5;
+}
+
+.pr-card--featured .pr-card__item {
+  color: rgba(255,252,250,0.85);
+}
+
+.pr-card__item--highlight {
+  font-weight: 600;
+}
+
+.pr-card--featured .pr-card__item--highlight {
+  color: #fffcfa;
+}
+
+.pr-card__check {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--color-clay);
+}
+
+.pr-card--featured .pr-card__check {
+  color: #c4b5ac;
+}
+
+.pr-card__item--highlight .pr-card__check {
+  color: var(--color-bark);
+}
+
+.pr-card--featured .pr-card__item--highlight .pr-card__check {
+  color: #fffcfa;
+}
+
+/* Footnote */
+.pr-footnote {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--color-clay);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+/* ─── Extras ──────────────────────────────────────────────── */
+.pr-extras {
+  background: var(--color-cream);
+  padding: 0 var(--container-gutter) clamp(4rem, 7vw, 6rem);
+}
+
+.pr-extras__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.pr-extras__card {
+  border: 1px solid rgba(92,72,67,0.15);
+  padding: clamp(2rem, 3.5vw, 2.5rem) clamp(1.5rem, 2.5vw, 2rem) clamp(2rem, 3.5vw, 2.5rem);
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.pr-extras__header {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.pr-extras__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 500;
+  color: var(--color-bark);
+  line-height: 1.1;
+  margin-top: var(--space-3);
+}
+
+.pr-extras__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.pr-extras__grid {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(92,72,67,0.15);
+}
+
+.pr-extra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid rgba(92,72,67,0.15);
+  transition: background 0.2s ease;
+}
+
+.pr-extra__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.pr-extra__label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-bark);
+}
+
+.pr-extra__detail {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--color-clay);
+  letter-spacing: 0.04em;
+}
+
+.pr-extra__price {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-clay);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── CTA ──────────────────────────────────────────────────── */
+.pr-cta {
+  background: var(--color-cream);
+  padding: clamp(3rem, 6vw, 5rem) var(--container-gutter);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pr-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.pr-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.pr-cta__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: var(--space-6);
+}
+
+.pr-cta__image {
+  display: block;
+  width: clamp(100px, 15vw, 160px);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+}
+
+.pr-cta__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.pr-cta__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-8);
+}
+
+.pr-cta__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.pr-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bark);
+  border: 1px solid rgba(92,72,67,0.3);
+  padding: var(--space-4) var(--space-8);
+  transition: background 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.pr-cta__btn:hover {
+  background: rgba(145,124,113,0.1);
+  border-color: rgba(92,72,67,0.6);
+}
+
+.pr-cta__btn svg { transition: transform 0.25s ease; }
+.pr-cta__btn:hover svg { transform: translateX(5px); }
+
+/* ─── Paar- & Familienshootings ───────────────────────────── */
+.pr-shooting {
+  background: var(--color-parchment);
+  padding: clamp(4rem, 8vw, 8rem) var(--container-gutter) clamp(3rem, 6vw, 6rem);
+  border-top: 1px solid rgba(92,72,67,0.1);
+}
+
+.pr-shooting__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.pr-shooting__extras {
+  margin-top: clamp(3rem, 5vw, 4rem);
+}
+
+.pr-shooting__extras .pr-extras__card {
+  background: var(--color-cream);
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .pr-grid {
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 860px) {
+  .pr-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+  .pr-card--featured {
+    order: -1;
+  }
+}
+
+@media (max-width: 540px) {
+  .pr-extra {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-card { transition: none; }
+  .pr-card:hover { transform: none; }
+}
+</style>

@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Bald verfügbar – MiNi Photography"
+  description="Wir arbeiten noch an unserer Website. Bald sind wir für euch da."
+>
+  <main class="cs">
+    <div class="cs__inner">
+
+      <div class="cs__logo">
+        <img src="/images/logo.png" alt="MiNi Photography" width="120" height="120" />
+      </div>
+
+      <div class="cs__text">
+        <p class="cs__label">Coming Soon</p>
+        <h1 class="cs__heading">Wir sind<br/><em>bald für euch da.</em></h1>
+        <p class="cs__body">
+          Unsere neue Website wird gerade fertiggestellt.<br/>
+          Schreibt uns gerne schon jetzt – wir freuen uns auf euch.
+        </p>
+      </div>
+
+      <div class="cs__links">
+        <a href="mailto:info@mini-foto.de" class="cs__email">
+          info@mini-foto.de
+        </a>
+        <a
+          href="https://instagram.com/photography.by.mini"
+          class="cs__instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="MiNi Photography auf Instagram"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          @photography.by.mini
+        </a>
+      </div>
+
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+.cs {
+  min-height: 100dvh;
+  background: var(--color-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--container-gutter);
+}
+
+.cs__inner {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  text-align: center;
+}
+
+.cs__logo img {
+  height: 100px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(92,72,67,0.15));
+  opacity: 0;
+  animation: csFadeUp 1s ease forwards 0.2s;
+}
+
+.cs__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  opacity: 0;
+  animation: csFadeUp 1s ease forwards 0.5s;
+}
+
+.cs__label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+}
+
+.cs__heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--color-bark);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.cs__heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-clay);
+}
+
+.cs__body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-clay);
+  line-height: 1.8;
+}
+
+.cs__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  opacity: 0;
+  animation: csFadeUp 1s ease forwards 0.8s;
+}
+
+.cs__email {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--color-bark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color var(--transition-base);
+}
+
+.cs__email:hover {
+  color: var(--color-clay);
+}
+
+.cs__instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--color-clay);
+  transition: color var(--transition-base);
+}
+
+.cs__instagram:hover {
+  color: var(--color-bark);
+}
+
+@keyframes csFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 540px) {
+  .cs__inner { gap: var(--space-10); }
+  .cs__logo img { height: 80px; }
+}
+</style>
