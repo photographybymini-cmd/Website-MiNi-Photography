@@ -8,7 +8,7 @@ import { staticPosts, formatMonthYear } from '../data/posts.js';
 // Neue Posts aus Markdown-Dateien (automatisch erkannt)
 const collectionPosts = await getCollection('blog');
 const dynamicPosts = collectionPosts.map(post => ({
-  href: `/blog/${post.slug}`,
+  href: `/blog/${post.id}`,
   category: post.data.category,
   title: post.data.title,
   teaser: post.data.description,
