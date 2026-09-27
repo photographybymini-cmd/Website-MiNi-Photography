@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortfolioImage from '../../components/PortfolioImage.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import { getPost, formatMonthYear } from '../../data/posts.js';
@@ -50,7 +51,7 @@ const postDate = formatMonthYear(getPost('familie-mitwachsen').date);
         <div class="fm-sect__head">
           <span class="fm-sect__num">01</span>
           <h2 class="fm-sect__title">Schwangerschaft –<br/><em>Vorfreude in Bildern</em></h2>
-          <img class="fm-photo" src="/images/portfolio/familie/Galerie/babybauch-blog-1.jpg" alt="Babybauch Fotografie MiNi Photography" loading="lazy" width="800" height="533" />
+          <PortfolioImage class="fm-photo" src="/images/portfolio/familie/Galerie/babybauch-blog-1.jpg" alt="Babybauch Fotografie MiNi Photography" widths={[400, 800, 1200]} sizes="(max-width: 860px) 100vw, 420px" />
         </div>
         <div class="fm-sect__body fm-reveal">
           <p>Ein Schwangerschaftsshooting ist eine wunderbare Möglichkeit, die Vorfreude auf das neue Familienmitglied festzuhalten. Es geht dabei nicht nur um den Babybauch, sondern auch um die Verbindung zwischen euch als werdende Eltern.</p>
@@ -69,7 +70,7 @@ const postDate = formatMonthYear(getPost('familie-mitwachsen').date);
         <div class="fm-sect__head">
           <span class="fm-sect__num">02</span>
           <h2 class="fm-sect__title">Willkommen,<br/><em>kleines Wunder.</em></h2>
-          <img class="fm-photo" src="/images/portfolio/familie/Galerie/newborn-blog-1.jpg" alt="Neugeborenen Fotografie MiNi Photography" loading="lazy" width="800" height="533" />
+          <PortfolioImage class="fm-photo" src="/images/portfolio/familie/Galerie/newborn-blog-1.jpg" alt="Neugeborenen Fotografie MiNi Photography" widths={[400, 800, 1200]} sizes="(max-width: 860px) 100vw, 420px" />
         </div>
         <div class="fm-sect__body fm-reveal">
           <p>Kaum ist das Baby da, verändert sich alles. Die Tage werden voller, die Nächte oft kürzer und plötzlich dreht sich vieles um diesen kleinen Menschen. Genau deshalb sind die ersten Wochen so besonders. Sie sind intensiv, emotional und gleichzeitig unglaublich vergänglich.</p>

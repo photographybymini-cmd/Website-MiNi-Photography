@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortfolioImage from '../../components/PortfolioImage.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import { getPost, formatMonthYear } from '../../data/posts.js';
@@ -138,7 +139,7 @@ const opts = [
               <h2 class="fl-opt__title">{opt.title}</h2>
               <p class="fl-opt__sub">{opt.sub}</p>
               {opt.image && (
-                <img class="fl-photo" src={opt.image} alt="Hochzeitsfotografie MiNi Photography" loading="lazy" width="800" height="533" />
+                <PortfolioImage class="fl-photo" src={opt.image} alt="Hochzeitsfotografie MiNi Photography" widths={[400, 800, 1200]} sizes="(max-width: 860px) 100vw, 420px" />
               )}
             </header>
 

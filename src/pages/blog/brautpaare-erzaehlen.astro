@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortfolioImage from '../../components/PortfolioImage.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import { getPost, formatMonthYear } from '../../data/posts.js';
@@ -65,7 +66,7 @@ const postDate = formatMonthYear(getPost('brautpaare-erzaehlen').date);
               <span class="bz-story__num">01</span>
               <h2 class="bz-story__name">Corinna<br/>&amp; Simon</h2>
             </div>
-            <img class="bz-story__head-img" src="/images/portfolio/hochzeiten/galerie/corinna-simon-1.jpg" alt="Corinna &amp; Simon" loading="lazy" width="800" height="533" />
+            <PortfolioImage class="bz-story__head-img" src="/images/portfolio/hochzeiten/galerie/corinna-simon-1.jpg" alt="Corinna &amp; Simon" widths={[400, 800, 1200]} sizes="(max-width: 860px) 100vw, 420px" />
           </header>
           <div class="bz-story__body">
             <p class="bz-story__intro bz-reveal" style="--delay:0.08s">
@@ -90,7 +91,7 @@ const postDate = formatMonthYear(getPost('brautpaare-erzaehlen').date);
               <span class="bz-story__num">02</span>
               <h2 class="bz-story__name">Nissrin<br/>&amp; Ömer</h2>
             </div>
-            <img class="bz-story__head-img" src="/images/portfolio/hochzeiten/galerie/nissrin-oemer-1.jpg" alt="Nissrin &amp; Ömer" loading="lazy" width="800" height="533" />
+            <PortfolioImage class="bz-story__head-img" src="/images/portfolio/hochzeiten/galerie/nissrin-oemer-1.jpg" alt="Nissrin &amp; Ömer" widths={[400, 800, 1200]} sizes="(max-width: 860px) 100vw, 420px" />
           </header>
           <div class="bz-story__body">
             <p class="bz-story__intro bz-reveal" style="--delay:0.08s">
