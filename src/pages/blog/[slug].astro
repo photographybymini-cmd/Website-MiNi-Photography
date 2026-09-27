@@ -3,8 +3,6 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-import Comments from '../../components/Comments.astro';
-import Like from '../../components/Like.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -77,8 +75,6 @@ const dateFormatted = post.data.date.toLocaleDateString('de-DE', {
     </div>
 
   </main>
-  <Like slug={post.slug} />
-  <Comments slug={post.slug} />
   <Footer />
 </BaseLayout>
 

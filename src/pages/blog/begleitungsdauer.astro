@@ -2,8 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-import Comments from '../../components/Comments.astro';
-import Like from '../../components/Like.astro';
+import PortfolioImage from '../../components/PortfolioImage.astro';
 import { getPost, formatMonthYear } from '../../data/posts.js';
 
 const chapters = [
@@ -86,7 +85,7 @@ const postDate = formatMonthYear(getPost('begleitungsdauer').date);
             <span class="bd-sect__num">01</span>
             <h2 class="bd-sect__title">Was soll auf jeden Fall fotografiert werden?</h2>
             <p class="bd-sect__sub">Die wichtigsten Momente zuerst.</p>
-            <img class="bd-photo" src="/images/portfolio/hochzeiten/galerie/begleitungsdauer-blog-1.jpg" alt="Hochzeitsfotografie MiNi Photography" loading="lazy" width="800" height="533" />
+            <PortfolioImage class="bd-photo" src="/images/portfolio/hochzeiten/galerie/begleitungsdauer-blog-1.jpg" alt="Hochzeitsfotografie MiNi Photography" widths={[400, 800, 1200]} sizes="(max-width: 860px) 100vw, 420px" />
           </header>
           <div class="bd-sect__body">
             <p class="bd-sect__intro bd-reveal" style="--delay:0.08s">
@@ -187,7 +186,7 @@ const postDate = formatMonthYear(getPost('begleitungsdauer').date);
             <span class="bd-sect__num">03</span>
             <h2 class="bd-sect__title">Noch unsicher?</h2>
             <p class="bd-sect__sub">Diese Fragen helfen euch.</p>
-            <img class="bd-photo" src="/images/portfolio/hochzeiten/galerie/begleitungsdauer-blog-2.jpg" alt="Hochzeitsfotografie MiNi Photography" loading="lazy" width="800" height="533" />
+            <PortfolioImage class="bd-photo" src="/images/portfolio/hochzeiten/galerie/begleitungsdauer-blog-2.jpg" alt="Hochzeitsfotografie MiNi Photography" widths={[400, 800, 1200]} sizes="(max-width: 860px) 100vw, 420px" />
           </header>
           <div class="bd-sect__body">
             <p class="bd-sect__intro bd-reveal" style="--delay:0.08s">
@@ -238,8 +237,6 @@ const postDate = formatMonthYear(getPost('begleitungsdauer').date);
     </div>
 
   </main>
-  <Like slug="begleitungsdauer" />
-  <Comments slug="begleitungsdauer" />
   <Footer />
 </BaseLayout>
 

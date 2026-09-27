@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import PortfolioImage from '../../components/PortfolioImage.astro';
 import '../../styles/portfolio.css';
 
 
@@ -107,7 +108,7 @@ const allePhotos = [
 
     <!-- Hero -->
     <section class="pf-hero pf-hero--has-img" aria-label="Portfolio Familien">
-      <img class="pf-hero__bg" src="/images/portfolio/familie/cover.jpg" alt="" aria-hidden="true" fetchpriority="high" />
+      <PortfolioImage class="pf-hero__bg" src="/images/portfolio/familie/cover.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" widths={[800, 1280, 1920]} sizes="100vw" />
       <div class="pf-hero__inner">
         <a href="/familie" class="pf-hero__back">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -153,7 +154,7 @@ const allePhotos = [
         <div class="pf-grid" id="pf-grid">
           {allePhotos.map((p) => (
             <div class="pf-item" data-category={p.category}>
-              <img src={p.src} alt={p.alt} loading="lazy" />
+              <PortfolioImage src={p.src} alt={p.alt} />
               <div class="pf-item__overlay"></div>
             </div>
           ))}
